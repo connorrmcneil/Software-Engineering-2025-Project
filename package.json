@@ -1,0 +1,14 @@
+{
+    "name": "swe-project",
+    "version": "0.1.0",
+    "private": true,
+    "workspaces": [
+        "packages/*"
+    ],
+    "scripts": {
+        "dev": "concurrently \"bun run --filter=front-end dev\" \"bun run --filter=api dev\""
+    },
+    "devDependencies": {
+        "concurrently": "^9.2.1"
+    }
+}
