@@ -1,4 +1,4 @@
-import { Game1, Game2, Dictionary, ErrorPage} from "@/pages";
+import { Game1, Game2, Dictionary, ErrorPage, AdminPage}  from "@/pages";
 import { createBrowserRouter, RouterProvider } from "react-router";
 
 const router = createBrowserRouter([
@@ -21,6 +21,10 @@ const router = createBrowserRouter([
     {
         path: "/errortest",
         element: <ErrorPage/>
+    },
+    {
+        path: "/admin",
+        element: <AdminPage/>
     }
 ])
 
