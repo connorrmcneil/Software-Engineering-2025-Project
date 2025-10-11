@@ -9,6 +9,14 @@
         "dev": "concurrently \"bun run --filter=front-end dev\" \"bun run --filter=api dev\""
     },
     "devDependencies": {
-        "concurrently": "^9.2.1"
+        "@tailwindcss/postcss": "^4.1.14",
+        "autoprefixer": "^10.4.21",
+        "concurrently": "^9.2.1",
+        "postcss": "^8.5.6",
+        "tailwindcss": "^4.1.14"
+    },
+    "dependencies": {
+        "@mantine/core": "^8.3.4",
+        "@mantine/hooks": "^8.3.4"
     }
 }
