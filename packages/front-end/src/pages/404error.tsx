@@ -1,3 +1,3 @@
-export function ErrorPage(){
-    return <div>Error page!</div>
+export function ErrorPage() {
+  return <div>Error page!</div>
 }

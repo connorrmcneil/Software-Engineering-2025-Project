@@ -1,17 +1,13 @@
-import { Card, Image, Text, Button, Group, Center } from '@mantine/core';
-import CharacterPlaceholder from '@/assets/Images/Characters/CharacterPlaceholder.png';
+import {Button, Card, Center, Group, Image, Text} from '@mantine/core'
+
+import CharacterPlaceholder from '@/assets/Images/Characters/CharacterPlaceholder.png'
 
 export function CharacterCard() {
   return (
     <Card shadow="sm" padding="lg" radius="md" withBorder>
       <Card.Section>
-        <Center> 
-          <Image
-            src={CharacterPlaceholder}
-            height="2in"
-            width="auto"
-            alt="Character"
-          />
+        <Center>
+          <Image src={CharacterPlaceholder} height="2in" width="auto" alt="Character" />
         </Center>
       </Card.Section>
 
@@ -23,5 +19,5 @@ export function CharacterCard() {
         Choose Character #
       </Button>
     </Card>
-  );
+  )
 }

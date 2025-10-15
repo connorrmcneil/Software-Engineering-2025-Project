@@ -1,3 +1,3 @@
-export function Dictionary(){
-    return <div>Dictionary page!</div>
+export function Dictionary() {
+  return <div>Dictionary page!</div>
 }
