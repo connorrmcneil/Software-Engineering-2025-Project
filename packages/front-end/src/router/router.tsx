@@ -1,13 +1,20 @@
-import {createBrowserRouter, RouterProvider} from 'react-router'
+/**
+ * The routes to other pages
+ * 
+ * Author(s):
+ * Wenda Tan
+ * (Originally John's Code)
+ */
+import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
-import {AdminPage, Dictionary, ErrorPage, Game1, Game2, SigninPage} from '@/pages'
-import {authLoader} from './auth.loader'
-import {signinLoader} from './signin.loader'
+import { AdminPage, Dictionary, ErrorPage, Game1, Game2, HomePage, SigninPage, WordMatchGame } from '@/pages'
+import { authLoader } from './auth.loader'
+import { signinLoader } from './signin.loader'
 
 const router = createBrowserRouter([
   {
-    index: true,
-    element: <div>Home page!</div>
+    path: '/',
+    element: <HomePage />
   },
   {
     path: '/game1',
@@ -18,12 +25,12 @@ const router = createBrowserRouter([
     element: <Game2 />
   },
   {
-    path: '/dictionary',
-    element: <Dictionary />
+    path: '/matching-game',
+    element: <WordMatchGame />
   },
   {
-    path: '/errortest',
-    element: <ErrorPage />
+    path: '/dictionary',
+    element: <Dictionary />
   },
   {
     path: '/admin',
@@ -34,6 +41,10 @@ const router = createBrowserRouter([
     path: '/admin/signin',
     loader: signinLoader,
     element: <SigninPage />
+  },
+  {
+  path: '*',
+  element: <ErrorPage />
   }
 ])
 
