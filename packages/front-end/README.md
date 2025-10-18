@@ -1,3 +1,15 @@
+# To run this app...
+
+Create a file `public/env.js` with the following content:
+
+```js
+window.env = {
+  API_URL: 'http://localhost:5050'
+}
+```
+
+or with the URL of your backend API...
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

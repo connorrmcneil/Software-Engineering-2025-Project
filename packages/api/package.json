@@ -1,16 +1,33 @@
 {
   "name": "api",
-  "module": "index.ts",
+  "module": "main.ts",
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "bun run --watch index.ts",
-    "start": "bun index.ts"
+    "dev": "bun run --watch src/main.ts",
+    "seed-db": "bun run prisma/seed.ts"
   },
   "devDependencies": {
-    "@types/bun": "latest"
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
+    "@types/bcrypt": "^6.0.0",
+    "@types/bun": "latest",
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.3",
+    "@types/jsonwebtoken": "^9.0.10",
+    "@types/morgan": "^1.9.10",
+    "prisma": "^6.16.2"
   },
   "peerDependencies": {
     "typescript": "^5"
+  },
+  "dependencies": {
+    "@prisma/client": "^6.16.2",
+    "bcrypt": "^6.0.0",
+    "cors": "^2.8.5",
+    "dotenv": "^17.2.2",
+    "express": "^5.1.0",
+    "joi": "^18.0.1",
+    "jsonwebtoken": "^9.0.2",
+    "morgan": "^1.10.1"
   }
 }

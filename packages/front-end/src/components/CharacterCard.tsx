@@ -1,6 +1,6 @@
 import {Button, Card, Center, Group, Image, Text} from '@mantine/core'
 
-import CharacterPlaceholder from '@/assets/Images/Characters/CharacterPlaceholder.png'
+import CharacterPlaceholder from '@/assets/images/characters/placeholder.png'
 
 export function CharacterCard() {
   return (
