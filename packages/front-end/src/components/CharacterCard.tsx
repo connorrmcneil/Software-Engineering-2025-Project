@@ -1,4 +1,4 @@
-import {Button, Card, Center, Group, Image, Text} from '@mantine/core'
+import { Button, Card, Center, Group, Image, Text } from '@mantine/core'
 
 import CharacterPlaceholder from '@/assets/images/characters/placeholder.png'
 
