@@ -1,20 +1,13 @@
-/**
- * The routes to other pages
- * 
- * Author(s):
- * Wenda Tan
- * (Originally John's Code)
- */
 import {createBrowserRouter, RouterProvider} from 'react-router'
 
-import {AdminPage, Dictionary, ErrorPage, Game1, Game2, SigninPage, HomePage, WordMatchGame} from '@/pages'
+import {AdminPage, Dictionary, ErrorPage, Game1, Game2, SigninPage} from '@/pages'
 import {authLoader} from './auth.loader'
 import {signinLoader} from './signin.loader'
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <HomePage />
+    index: true,
+    element: <div>Home page!</div>
   },
   {
     path: '/game1',
@@ -25,12 +18,12 @@ const router = createBrowserRouter([
     element: <Game2 />
   },
   {
-    path: '/matching-game',
-    element: <WordMatchGame />
-  },
-  {
     path: '/dictionary',
     element: <Dictionary />
+  },
+  {
+    path: '/errortest',
+    element: <ErrorPage />
   },
   {
     path: '/admin',
@@ -41,10 +34,6 @@ const router = createBrowserRouter([
     path: '/admin/signin',
     loader: signinLoader,
     element: <SigninPage />
-  },
-  {
-  path: '*',
-  element: <ErrorPage />
   }
 ])
 
