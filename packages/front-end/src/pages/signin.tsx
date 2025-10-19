@@ -2,8 +2,9 @@ import { Button, Container, Paper, PasswordInput, Text, TextInput, Title } from 
 import { isNotEmpty, useForm } from '@mantine/form'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import {HeaderSimple} from '@/components/HeaderTabs'
 import { api } from '@/api'
+
 
 export function SigninPage() {
   // signin form with username and password fields
@@ -37,6 +38,8 @@ export function SigninPage() {
   }
 
   return (
+    <>
+    <HeaderSimple/>
     <Container size={420} my={40}>
       <Title ta="center">Welcome back</Title>
       <Paper withBorder shadow="sm" p={22} mt={30} radius="md">
@@ -70,5 +73,6 @@ export function SigninPage() {
         )}
       </Paper>
     </Container>
+    </>
   )
 }

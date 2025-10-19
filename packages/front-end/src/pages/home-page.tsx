@@ -4,9 +4,11 @@
  */
 import { Button, Text } from '@mantine/core'
 import { Link } from 'react-router-dom'
+import {HeaderSimple} from '@/components/HeaderTabs'
 
 export function HomePage() {
   return <>
+  <HeaderSimple/>
   <Text>Home Page!</Text>
   <Text>Quick links to our pages just for testing</Text>
 
