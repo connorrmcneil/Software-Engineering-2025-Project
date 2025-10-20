@@ -1,10 +1,10 @@
 /**
  * Main game board
- * 
+ *
  * Author(s):
  * Wenda Tan
  */
-import { Box, Grid } from '@mantine/core'
+import {Box, Grid} from '@mantine/core'
 
 interface WordInfo {
   text: string
@@ -19,9 +19,9 @@ interface WordGridProps {
   gridImage: string
 }
 
-export function WordGrid({ boxes, inactivePanel, handleSelection, gridImage }: WordGridProps) {
+export function WordGrid({boxes, inactivePanel, handleSelection, gridImage}: WordGridProps) {
   return (
-    <Box pos="relative" style={{ maxWidth: 600, width: '100%' }}>
+    <Box pos="relative" style={{maxWidth: 600, width: '100%'}}>
       {/* Grid Border Image */}
       <Box
         component="img"

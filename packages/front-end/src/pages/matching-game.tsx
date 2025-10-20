@@ -6,15 +6,15 @@
  * - Wenda Tan
  */
 
-import type { WordInfo } from '@/components/matching-game-components/wordData'
+import type {WordInfo} from '@/components/matching-game-components/wordData'
 
-import { Box, Center, Container, Stack, Text } from '@mantine/core'
-import { useCallback, useEffect, useState } from 'react'
+import {Box, Center, Container, Stack, Text} from '@mantine/core'
+import {useCallback, useEffect, useState} from 'react'
 
 import GridImage from '@/assets/images/items/Grid.png'
 import MatchingGameBackground from '@/assets/images/items/MatchingGameBackground.jpeg'
-import { BeadDisplay, GameOverModal, MonthSelect, WordControls, WordGrid, WrongAnswerModal } from '@/components'
-import { inactivePanel, MONTH_CONFIG, MONTHS, WORD_INFO } from '@/components/matching-game-components/wordData'
+import {BeadDisplay, GameOverModal, MonthSelect, WordControls, WordGrid, WrongAnswerModal} from '@/components'
+import {inactivePanel, MONTH_CONFIG, MONTHS, WORD_INFO} from '@/components/matching-game-components/wordData'
 
 
 // Main game
@@ -174,8 +174,7 @@ export function WordMatchGame() {
             Mikwite'tmk+t Angie
           </Text>
         </Center>
-        <Center
-          pb="lg">
+        <Center pb="lg">
           <Text size="1rem" pb="lg">
             Mi'kmaq Pictionary
           </Text>
