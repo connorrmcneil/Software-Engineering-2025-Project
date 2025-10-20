@@ -39,27 +39,25 @@ export function SigninPage() {
   return (
     <Container size={420} my={40}>
       <Title ta="center">Welcome back</Title>
-      <Paper withBorder shadow="sm" p={22} mt={30} radius="md">
+      <Paper withBorder shadow="sm" p="lg" mt="xl">
         <form onSubmit={form.onSubmit(onSubmit)}>
           <TextInput
             label="Username"
             placeholder="Enter your username"
-            radius="md"
             withAsterisk
             key={form.key('username')}
             {...form.getInputProps('username')}
+            mb="md"
           />
           <PasswordInput
             label="Password"
             placeholder="Enter your password"
-            mt="md"
-            radius="md"
             withAsterisk
             key={form.key('password')}
             {...form.getInputProps('password')}
           />
           {/* button is type=submit so that the form submits when clicked */}
-          <Button type="submit" fullWidth mt="xl" radius="md">
+          <Button type="submit" fullWidth mt="lg" radius="md">
             Sign in
           </Button>
         </form>

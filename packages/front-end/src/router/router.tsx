@@ -1,15 +1,15 @@
 /**
  * The routes to other pages
- * 
+ *
  * Author(s):
  * Wenda Tan
  * (Originally John's Code)
  */
-import { createBrowserRouter, RouterProvider } from 'react-router-dom'
+import {createBrowserRouter, RouterProvider} from 'react-router'
 
-import { AdminPage, Dictionary, ErrorPage, Game1, Game2, HomePage, SigninPage, WordMatchGame } from '@/pages'
-import { authLoader } from './auth.loader'
-import { signinLoader } from './signin.loader'
+import {AdminPage, Dictionary, ErrorPage, Game1, Game2, HomePage, SigninPage, WordMatchGame} from '@/pages'
+import {adminLoader} from './admin.loader'
+import {signinLoader} from './signin.loader'
 
 const router = createBrowserRouter([
   {
@@ -34,7 +34,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    loader: authLoader,
+    loader: adminLoader,
     element: <AdminPage />
   },
   {
@@ -43,8 +43,8 @@ const router = createBrowserRouter([
     element: <SigninPage />
   },
   {
-  path: '*',
-  element: <ErrorPage />
+    path: '*',
+    element: <ErrorPage />
   }
 ])
 

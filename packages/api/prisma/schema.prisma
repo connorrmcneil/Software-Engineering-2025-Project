@@ -14,20 +14,40 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+enum Month {
+  January
+  February
+  March
+  April
+  May
+  June
+  July
+  August
+  September
+  October
+  November
+  December
+}
+
 model Word {
-  id        String   @id @default(nanoid())
-  mikmaq    String   @unique
-  english   String
-  createdAt DateTime @default(now())
-  updatedAt DateTime @updatedAt
+  id         String   @id @default(nanoid())
+  mikmaq     String   @unique
+  english    String
+  startMonth Month
+  imagePath  String
+  audioPath  String
+  user       User     @relation(fields: [userId], references: [id])
+  userId     String
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
 }
 
 model User {
   id        String   @id @default(nanoid())
   username  String   @unique
-  firstName String
-  lastName  String
+  name      String
   password  String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  words     Word[]
 }
