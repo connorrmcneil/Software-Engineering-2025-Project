@@ -7,13 +7,14 @@ import TerryBot from '@/assets/images/characters/TerryBot.jpg'
 import classes from '@/styles/HeaderSimple.module.css'
 
 const links = [
-  {link: '/', label: 'Home'},
-  {link: '/game1', label: 'Game 1'},
-  {link: '/game2', label: 'Game 2'},
-  {link: '/matching-game', label: 'Word Match'},
-  {link: '/dictionary', label: 'Dictionary'},
-  {link: '/admin/signin', label: 'Admin'}
-]
+  { link: '/', label: 'Home' },
+  { link: '/admin/signin', label: 'Sign In' },
+  { link: '/game1', label: 'Game 1' },
+  { link: '/game2', label: 'Game 2' },
+  { link: '/matching-game', label: 'Word Match' },
+  { link: '/dictionary', label: 'Dictionary' },
+  { link: '/admin', label: 'Admin' },
+];
 
 export function HeaderSimple() {
   const [opened, {toggle}] = useDisclosure(false)

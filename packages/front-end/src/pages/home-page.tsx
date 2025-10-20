@@ -6,10 +6,10 @@ import {Button, Text} from '@mantine/core'
 import {Link} from 'react-router'
 
 export function HomePage() {
-  return (
-    <>
-      <Text>Home Page!</Text>
-      <Text>Quick links to our pages just for testing</Text>
+  return <>
+
+  <Text>Home Page!</Text>
+  <Text>Quick links to our pages just for testing</Text>
 
       <Button component={Link} to="/admin/signin" radius="lg" size="lg">
         sign in
