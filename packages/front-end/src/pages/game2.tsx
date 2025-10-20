@@ -1,6 +1,5 @@
 import {GameEndPopup} from '@/components/GameEndPopup'
 
-
 export function Game2() {
   return (
     <div>

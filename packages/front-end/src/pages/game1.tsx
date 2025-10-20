@@ -1,7 +1,6 @@
 import {Button, Group} from '@mantine/core'
 import {useState} from 'react'
 
-
 import {CharacterCard} from '@/components'
 
 export function Game1() {
