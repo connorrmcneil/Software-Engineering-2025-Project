@@ -15,7 +15,7 @@ import GridImage from '@/assets/images/items/Grid.png'
 import MatchingGameBackground from '@/assets/images/items/MatchingGameBackground.jpeg'
 import { BeadDisplay, GameOverModal, MonthSelect, WordControls, WordGrid, WrongAnswerModal } from '@/components'
 import { inactivePanel, MONTH_CONFIG, MONTHS, WORD_INFO } from '@/components/matching-game-components/wordData'
-import {HeaderSimple} from '@/components/HeaderTabs'
+
 
 // Main game
 export function WordMatchGame() {
@@ -147,7 +147,6 @@ export function WordMatchGame() {
   // Main game using all components and functions
   return (
     <>    
-    <HeaderSimple/>
     <Box
       style={{
         minHeight: '100vh',

@@ -8,12 +8,11 @@ import classes from '@/styles/HeaderSimple.module.css';
 
 const links = [
   { link: '/', label: 'Home' },
-  { link: '/admin/signin', label: 'Sign In' },
   { link: '/game1', label: 'Game 1' },
   { link: '/game2', label: 'Game 2' },
   { link: '/matching-game', label: 'Word Match' },
   { link: '/dictionary', label: 'Dictionary' },
-  { link: '/admin', label: 'Admin' },
+  { link: '/admin/signin', label: 'Admin' },
 ];
 
 export function HeaderSimple() {
