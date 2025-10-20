@@ -1,11 +1,11 @@
 /**
  * Allows for a second attempt at a word before revealing the answer and restarting the game.
- * 
+ *
  * Author(s):
  * Wenda Tan
  * (Assisted with ChatGPT)
  */
-import { Button, Modal, Stack, Text } from '@mantine/core'
+import {Button, Modal, Stack, Text} from '@mantine/core'
 
 interface WrongAnswerModalProps {
   opened: boolean

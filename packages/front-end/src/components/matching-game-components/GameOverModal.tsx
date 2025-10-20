@@ -1,15 +1,15 @@
 /**
  * When the game is over, show the number of beads and allow user to play again.
  * Temporary page, will reaplce with ConnorG's once it's completed
- * 
+ *
  * Author(s):
  * Wenda Tan
  * ChatGPT
  */
 
-import { Button, Group, Modal, Stack, Text } from '@mantine/core'
+import {Button, Group, Modal, Stack, Text} from '@mantine/core'
 
-import { BeadDisplay } from './BeadDisplay'
+import {BeadDisplay} from './BeadDisplay'
 
 interface GameOverModalProps {
   isGameEnd: boolean
@@ -17,7 +17,7 @@ interface GameOverModalProps {
   onNewGame: () => void
 }
 
-export function GameOverModal({ isGameEnd, successCount, onNewGame }: GameOverModalProps) {
+export function GameOverModal({isGameEnd, successCount, onNewGame}: GameOverModalProps) {
   return (
     <Modal
       opened={isGameEnd}

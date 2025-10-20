@@ -1,11 +1,11 @@
-import { Box, Group } from '@mantine/core'
+import {Box, Group} from '@mantine/core'
 import React from 'react'
 
 interface BeadDisplayProps {
   successCount: number
 }
 
-export const BeadDisplay: React.FC<BeadDisplayProps> = ({ successCount }) => {
+export const BeadDisplay: React.FC<BeadDisplayProps> = ({successCount}) => {
   return (
     <Group gap="xs" justify="center">
       {Array(successCount)

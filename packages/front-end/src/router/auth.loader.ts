@@ -14,7 +14,7 @@ export const authLoader = async () => {
   try {
     const {data} = await api.get<{user: User}>('/users/me')
     return {user: data.user}
-  } catch (error) {
+  } catch {
     throw redirect('/admin/signin')
   }
 }

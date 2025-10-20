@@ -1,9 +1,9 @@
-import { Button, Container, Paper, PasswordInput, Text, TextInput, Title } from '@mantine/core'
-import { isNotEmpty, useForm } from '@mantine/form'
-import { useState } from 'react'
-import { useNavigate } from 'react-router-dom'
+import {Button, Container, Paper, PasswordInput, Text, TextInput, Title} from '@mantine/core'
+import {isNotEmpty, useForm} from '@mantine/form'
+import {useState} from 'react'
+import {useNavigate} from 'react-router'
 
-import { api } from '@/api'
+import {api} from '@/api'
 
 export function SigninPage() {
   // signin form with username and password fields
@@ -30,7 +30,7 @@ export function SigninPage() {
       // if successful, store the returned token and navigate to the admin page
       localStorage.setItem('AuthToken', data.token)
       await navigate('/admin')
-    } catch (error) {
+    } catch {
       // if sign-in fails, show an error message
       setFailed(true)
     }

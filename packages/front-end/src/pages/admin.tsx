@@ -171,7 +171,7 @@ function CreateWordModal({onClose, ...props}: ModalProps) {
       await api.post('/words', data)
       revalidate()
       _onClose()
-    } catch (error) {
+    } catch {
       setFailed(true)
     }
   }

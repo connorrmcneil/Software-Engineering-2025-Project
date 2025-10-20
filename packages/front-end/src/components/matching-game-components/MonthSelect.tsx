@@ -1,11 +1,11 @@
 /**
  * Allows user to select month to show more or less words.
- * 
+ *
  * Author(s):
  * Wenda Tan
  * (Assisted with ChatGPT)
  */
-import { Select } from '@mantine/core'
+import {Select} from '@mantine/core'
 
 interface MonthSelectProps {
   selectedMonth: string
@@ -14,7 +14,7 @@ interface MonthSelectProps {
   months: string[]
 }
 
-export function MonthSelect({ selectedMonth, onChange, monthConfig, months }: MonthSelectProps) {
+export function MonthSelect({selectedMonth, onChange, monthConfig, months}: MonthSelectProps) {
   return (
     <Select
       label="Select Month"
@@ -25,7 +25,7 @@ export function MonthSelect({ selectedMonth, onChange, monthConfig, months }: Mo
         label: `${month} (${monthConfig[month]} words)`
       }))}
       size="lg"
-      style={{ width: '300px' }}
+      style={{width: '300px'}}
     />
   )
 }
