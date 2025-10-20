@@ -1,7 +1,7 @@
 import {createBrowserRouter, RouterProvider} from 'react-router'
 
 import {AdminPage, Dictionary, ErrorPage, Game1, Game2, SigninPage} from '@/pages'
-import {authLoader} from './auth.loader'
+import {adminLoader} from './admin.loader'
 import {signinLoader} from './signin.loader'
 
 const router = createBrowserRouter([
@@ -27,7 +27,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/admin',
-    loader: authLoader,
+    loader: adminLoader,
     element: <AdminPage />
   },
   {

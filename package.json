@@ -1,18 +1,18 @@
 {
   "name": "swe-project",
   "version": "0.1.0",
+  "devDependencies": {
+    "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
+    "concurrently": "^9.2.1",
+    "prettier": "^3.6.2"
+  },
   "private": true,
-  "workspaces": [
-    "packages/*"
-  ],
   "scripts": {
     "dev": "concurrently \"bun run --filter=front-end dev\" \"bun run --filter=api dev\"",
     "format": "prettier --write ./packages/**/*.{js,jsx,ts,tsx,json,css,md}",
     "typecheck": "tsc -b --noEmit packages/*"
   },
-  "devDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
-    "concurrently": "^9.2.1",
-    "prettier": "^3.6.2"
-  }
+  "workspaces": [
+    "packages/*"
+  ]
 }

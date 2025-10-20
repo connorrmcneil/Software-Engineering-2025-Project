@@ -33,6 +33,7 @@ function bootstrap() {
   app.use(express.urlencoded({extended: true}))
   app.use(cors({origin: process.env.ORIGIN}))
   app.use(morgan('tiny'))
+  app.use(express.static('public'))
 
   // routes
   app.get('/', (_req, res) => {
