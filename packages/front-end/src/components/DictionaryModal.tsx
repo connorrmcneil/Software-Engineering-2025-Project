@@ -1,6 +1,19 @@
 //clickable buttons with popups, search and audio
 
-import {Button, Image, Modal, Paper, ScrollArea, SimpleGrid, Stack, Text, TextInput} from '@mantine/core'
+import {
+  Badge,
+  Button,
+  Group,
+  Image,
+  Modal,
+  Paper,
+  ScrollArea,
+  SimpleGrid,
+  Stack,
+  Text,
+  TextInput,
+  Title
+} from '@mantine/core'
 import {useDisclosure} from '@mantine/hooks'
 import {useState} from 'react'
 
@@ -29,7 +42,7 @@ export function DictionaryModal() {
   const [searchQuery, setSearchQuery] = useState('')
 
   // 5. Sample dataset (with audio)
-  const items: DictionaryItem[] = Array.from({length: 100}, (_, index) => ({
+  const items: DictionaryItem[] = Array.from({length: 32}, (_, index) => ({
     id: index,
     english: `Word ${index + 1}`,
     mikmaq: `Mi'kmaq ${index + 1}`,
@@ -57,7 +70,14 @@ export function DictionaryModal() {
       <Modal
         opened={opened}
         onClose={close}
-        title="mi'kmaq Dictionary"
+        title={
+          <Group spacing="sm">
+            <Title order={2}>Mi'kmaq Dictionary</Title>
+            <Badge color="blue" variant="light">
+              {filteredItems.length} words
+            </Badge>
+          </Group>
+        }
         size="80%"
         centered
         scrollAreaComponent={ScrollArea.Autosize}
@@ -96,7 +116,7 @@ export function DictionaryModal() {
                 }}
               >
                 <Paper withBorder shadow="sm" radius="md" style={{overflow: 'hidden'}}>
-                  <Image src={item.image} alt={item.english} height={160} fit="cover" withPlaceholder />
+                  <Image src={item.image} alt={item.english} height={160} fit="cover" />
                   <Stack spacing={4} p="sm">
                     <Text fw={600}>{item.english}</Text>
                   </Stack>
@@ -116,10 +136,10 @@ export function DictionaryModal() {
 
             {/* 14. Word Info */}
             <Text fw={700} size="lg">
-              English: {selectedItem.english}
+              Mi'kmaq: {selectedItem.mikmaq}
             </Text>
             <Text fw={500} size="md" c="dimmed">
-              Mi'kmaq: {selectedItem.mikmaq}
+              English: {selectedItem.english}
             </Text>
 
             {/* 15. Audio Player */}
