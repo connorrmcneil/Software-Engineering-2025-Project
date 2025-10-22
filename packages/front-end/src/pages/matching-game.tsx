@@ -145,81 +145,83 @@ export function WordMatchGame() {
 
   // Main game using all components and functions
   return (
-    <Box
-      style={{
-        minHeight: '100vh',
-        width: '100vw',
-        backgroundImage: `url(${MatchingGameBackground})`,
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        backgroundRepeat: 'no-repeat',
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center'
-      }}
-    >
-      <Container
-        size="xl"
-        py="xl"
+    <>
+      <Box
         style={{
-          backgroundColor: 'rgba(255, 255, 255, 0.75)',
-          borderRadius: '16px',
-          padding: '2rem'
+          minHeight: '100vh',
+          width: '100vw',
+          backgroundImage: `url(${MatchingGameBackground})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center'
         }}
       >
-        <Center>
-          <Text size="2rem" pb="lg">
-            Mikwite'tmk+t Angie
-          </Text>
-        </Center>
-        <Center pb="lg">
-          <Text size="1rem" pb="lg">
-            Mi'kmaq Pictionary
-          </Text>
-        </Center>
+        <Container
+          size="xl"
+          py="xl"
+          style={{
+            backgroundColor: 'rgba(255, 255, 255, 0.75)',
+            borderRadius: '16px',
+            padding: '2rem'
+          }}
+        >
+          <Center>
+            <Text size="2rem" pb="lg">
+              Mikwite'tmk+t Angie
+            </Text>
+          </Center>
+          <Center pb="lg">
+            <Text size="1rem" pb="lg">
+              Mi'kmaq Pictionary
+            </Text>
+          </Center>
 
-        <GameOverModal isGameEnd={gameEnd} successCount={successCount} onNewGame={newGame} />
+          <GameOverModal isGameEnd={gameEnd} successCount={successCount} onNewGame={newGame} />
 
-        <WrongAnswerModal
-          opened={showWrongModal}
-          firstAttempt={true}
-          onTryAgain={handleTryAgain}
-          onRestart={handleRestart}
-        />
-
-        <WrongAnswerModal
-          opened={showSecondModal}
-          firstAttempt={false}
-          correctWord={initWords[callCount]?.text}
-          translation={initWords[callCount]?.english}
-          onTryAgain={handleTryAgain}
-          onRestart={handleRestart}
-        />
-
-        <Stack gap="xl" align="center">
-          <MonthSelect
-            selectedMonth={selectedMonth}
-            onChange={setSelectedMonth}
-            monthConfig={MONTH_CONFIG}
-            months={MONTHS}
+          <WrongAnswerModal
+            opened={showWrongModal}
+            firstAttempt={true}
+            onTryAgain={handleTryAgain}
+            onRestart={handleRestart}
           />
 
-          {successCount > 0 && (
-            <Box>
-              <BeadDisplay successCount={successCount} />
-            </Box>
-          )}
-
-          <WordControls displayText={displayText} roundDisplay={roundDisplay} playAudio={playAudio} />
-
-          <WordGrid
-            boxes={boxes}
-            inactivePanel={inactivePanel}
-            handleSelection={handleSelection}
-            gridImage={GridImage}
+          <WrongAnswerModal
+            opened={showSecondModal}
+            firstAttempt={false}
+            correctWord={initWords[callCount]?.text}
+            translation={initWords[callCount]?.english}
+            onTryAgain={handleTryAgain}
+            onRestart={handleRestart}
           />
-        </Stack>
-      </Container>
-    </Box>
+
+          <Stack gap="xl" align="center">
+            <MonthSelect
+              selectedMonth={selectedMonth}
+              onChange={setSelectedMonth}
+              monthConfig={MONTH_CONFIG}
+              months={MONTHS}
+            />
+
+            {successCount > 0 && (
+              <Box>
+                <BeadDisplay successCount={successCount} />
+              </Box>
+            )}
+
+            <WordControls displayText={displayText} roundDisplay={roundDisplay} playAudio={playAudio} />
+
+            <WordGrid
+              boxes={boxes}
+              inactivePanel={inactivePanel}
+              handleSelection={handleSelection}
+              gridImage={GridImage}
+            />
+          </Stack>
+        </Container>
+      </Box>
+    </>
   )
 }
