@@ -12,15 +12,13 @@ const defaultUser = {
   password: await hash('admin', 10)
 }
 
-async function main() {
+export async function createDefaultUser() {
   const prisma = new PrismaClient()
 
   await prisma.user.deleteMany()
   await prisma.user.create({data: defaultUser})
 
   await prisma.user.findUnique({where: {username: 'admin'}})
-  console.log('Added default user into the database:')
+  console.log('✅ Added default user into the database')
   console.log(JSON.stringify({name: 'Admin User', username: 'admin', password: 'admin'}))
 }
-
-main()

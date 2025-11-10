@@ -31,7 +31,7 @@ export const words: {mikmaq: string; english: string; startMonth: Month}[] = [
   {mikmaq: 'Wen', english: 'Who', startMonth: 'March'}
 ]
 
-async function main() {
+export async function importWords() {
   const prisma = new PrismaClient()
 
   await prisma.word.deleteMany()
@@ -67,5 +67,3 @@ async function main() {
 
   console.log('✅ Words imported')
 }
-
-main()

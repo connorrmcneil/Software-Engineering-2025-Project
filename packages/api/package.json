@@ -8,7 +8,7 @@
     "setup-prisma": "prisma generate && prisma db push && prisma db seed"
   },
   "prisma": {
-    "seed": "bun run prisma/create-default-user.ts && bun run prisma/words/import-words.ts"
+    "seed": "bun run prisma/seed.ts"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
