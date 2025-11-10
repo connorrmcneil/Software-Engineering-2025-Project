@@ -1,4 +1,4 @@
-# swe-back-end
+# API
 
 To install dependencies:
 
@@ -6,10 +6,14 @@ To install dependencies:
 bun install
 ```
 
-To run:
+To setup your database:
 
 ```bash
-bun run index.ts
+bun run setup-prisma
 ```
 
-This project was created using `bun init` in bun v1.2.21. [Bun](https://bun.com) is a fast all-in-one JavaScript runtime.
+To run the API:
+
+```bash
+bun run dev
+```
