@@ -19,7 +19,8 @@
     "object-to-formdata": "^4.5.1",
     "react": "^19.1.1",
     "react-dom": "^19.1.1",
-    "react-router": "^7.9.3"
+    "react-router": "^7.9.3",
+    "react-router-dom": "^7.9.4"
   },
   "devDependencies": {
     "@eslint/js": "^9.36.0",
