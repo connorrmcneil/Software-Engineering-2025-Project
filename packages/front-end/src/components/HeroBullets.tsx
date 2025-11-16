@@ -2,8 +2,8 @@ import { Button, Container, Group, Image, List, Text, Title } from '@mantine/cor
 import { useMemo } from 'react';
 import { Link } from 'react-router';
 
-import character1Dance from './../assets/images/characters/character1-dance.png';
-import character2Dance from './../assets/images/characters/character2-dance.png';
+import character1Dance from '@/assets/images/characters/character1-dance.png';
+import character2Dance from '@/assets/images/characters/character2-dance.png';
 import classes from './HeroBullets.module.css';
 
 export function HeroBullets() {

@@ -41,7 +41,7 @@ export function HomePage() {
       </div>
 
       {/* Landing Page */}
-      <HeroBullets></HeroBullets>
+      <HeroBullets />
     </>
   )
 }
