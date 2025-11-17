@@ -55,7 +55,7 @@ function WordPanel({word, onClick}: {word: Word; onClick: () => void}) {
         alt={word.mikmaq}
         onClick={onClick}
         style={panelStyle}
-        onMouseEnter={e => (e.currentTarget.style.transform = 'scale(1.05)')}
+        onMouseEnter={e => (e.currentTarget.style.transform = 'scale(3)')}
         onMouseLeave={e => (e.currentTarget.style.transform = 'scale(1)')}
       />
     </Grid.Col>
