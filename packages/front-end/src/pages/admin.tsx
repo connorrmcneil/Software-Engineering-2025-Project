@@ -103,12 +103,14 @@ export function AdminPage() {
           </div>
         </Group>
         <Paper withBorder p="md">
-          <Table
-            data={table}
-            highlightOnHover
-            layout="fixed"
-            styles={{thead: {backgroundColor: 'var(--mantine-color-gray-1)'}}}
-          />
+          <Table.ScrollContainer minWidth={1000} maxHeight={500}>
+            <Table
+              data={table}
+              highlightOnHover
+              layout="fixed"
+              styles={{thead: {backgroundColor: 'var(--mantine-color-gray-1)'}}}
+            />
+          </Table.ScrollContainer>
           {!_words.length && (
             <Text c="dimmed" ta="center" mt="md" size="sm">
               No words found
