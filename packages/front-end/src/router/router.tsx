@@ -5,32 +5,39 @@
  * Wenda Tan
  * (Originally John's Code)
  */
-import {createBrowserRouter, RouterProvider} from 'react-router'
+import {AppShell, Button, Group} from '@mantine/core'
+import {HouseIcon} from '@phosphor-icons/react'
+import {createBrowserRouter, Link, Outlet, RouterProvider} from 'react-router'
 
-import {AdminPage, Dictionary, ErrorPage, Game1, Game2, HomePage, SigninPage, WordMatchGame} from '@/pages'
+import {Dictionary} from '@/components/Dictionary'
+import {AdminPage, ErrorPage, Game1, Game2, HomePage, SigninPage, WordMatchGame} from '@/pages'
 import {adminLoader} from './admin.loader'
 import {signinLoader} from './signin.loader'
+import {wordsLoader} from './words.loader'
 
 const router = createBrowserRouter([
   {
-    path: '/',
-    element: <HomePage />
-  },
-  {
-    path: '/game1',
-    element: <Game1 />
-  },
-  {
-    path: '/game2',
-    element: <Game2 />
-  },
-  {
-    path: '/matching-game',
-    element: <WordMatchGame />
-  },
-  {
-    path: '/dictionary',
-    element: <Dictionary />
+    element: <Layout />,
+    loader: wordsLoader,
+    children: [
+      {
+        path: '/',
+        element: <HomePage />
+      },
+      {
+        path: '/game1',
+        element: <Game1 />
+      },
+      {
+        path: '/game2',
+        element: <Game2 />
+      },
+      {
+        path: '/matching-game',
+        loader: wordsLoader,
+        element: <WordMatchGame />
+      }
+    ]
   },
   {
     path: '/admin',
@@ -50,4 +57,40 @@ const router = createBrowserRouter([
 
 export function Router() {
   return <RouterProvider router={router} />
+}
+
+type NavLink = {
+  label: string
+  href: string
+  icon?: React.ReactNode
+}
+
+const navLinks: NavLink[] = [
+  {label: 'Home', href: '/', icon: <HouseIcon size={20} weight="fill" />},
+  {label: 'Game 1', href: '/game1'},
+  {label: 'Game 2', href: '/game2'},
+  {label: 'Word Match', href: '/matching-game'},
+  {label: 'Admin', href: '/admin'}
+]
+
+function Layout() {
+  const links = navLinks.map((link, index) => (
+    <Button key={index} component={Link} to={link.href} leftSection={link.icon} variant="subtle" fw="bold">
+      {link.label}
+    </Button>
+  ))
+
+  return (
+    <AppShell header={{height: 80}} padding="md">
+      <AppShell.Header p="md">
+        <Group h="100%" justify="space-between">
+          <Group>{links}</Group>
+          <Dictionary />
+        </Group>
+      </AppShell.Header>
+      <AppShell.Main>
+        <Outlet />
+      </AppShell.Main>
+    </AppShell>
+  )
 }

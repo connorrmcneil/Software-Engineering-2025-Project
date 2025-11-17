@@ -9,32 +9,32 @@
 
 import {Button, Group, Modal, Stack, Text} from '@mantine/core'
 
-import {BeadDisplay} from './BeadDisplay'
+import {ScoreBeads} from './ScoreBeads'
 
-interface GameOverModalProps {
-  isGameEnd: boolean
-  successCount: number
+type GameOverModalProps = {
+  opened: boolean
+  score: number
   onNewGame: () => void
 }
 
-export function GameOverModal({isGameEnd, successCount, onNewGame}: GameOverModalProps) {
+export function GameOverModal({opened, score, onNewGame}: GameOverModalProps) {
   return (
     <Modal
-      opened={isGameEnd}
+      opened={opened}
       onClose={() => {}}
       title={
         <Text size="xl" fw={700} ta="center" w="100%">
-          kelulktelatekn
+          Kelulktelatekn
         </Text>
       }
       centered
       withCloseButton={false}
     >
       <Stack gap="lg">
-        <BeadDisplay successCount={successCount} />
+        <ScoreBeads score={score} />
         <Group justify="flex-end">
           <Button color="blue" onClick={onNewGame}>
-            si'owa'si?
+            Si'owa'si?
           </Button>
         </Group>
       </Stack>

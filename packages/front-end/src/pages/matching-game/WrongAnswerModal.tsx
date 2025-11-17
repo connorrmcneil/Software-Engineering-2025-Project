@@ -30,7 +30,7 @@ export function WrongAnswerModal({
         {firstAttempt ? (
           <>
             <Text size="lg" fw={500}>
-              That’s not the right word!
+              That's not the right word!
             </Text>
             <Text size="sm" c="dimmed">
               Try again.
