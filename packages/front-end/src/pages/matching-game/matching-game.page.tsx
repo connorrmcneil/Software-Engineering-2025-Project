@@ -137,7 +137,7 @@ export function WordMatchGame() {
             successCount: state.successCount + 1,
             wrongAttempts: 0,
             gameEnd,
-            initialized: !gameEnd
+            initialized: false
           }
         }
 

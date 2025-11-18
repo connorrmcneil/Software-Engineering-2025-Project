@@ -28,7 +28,8 @@ export const words: {mikmaq: string; english: string; startMonth: Month}[] = [
   {mikmaq: 'Ula', english: 'Look at this', startMonth: 'February'},
   {mikmaq: 'Kesalul', english: 'I love you', startMonth: 'February'},
   {mikmaq: "Welta'si", english: 'I am happy', startMonth: 'March'},
-  {mikmaq: 'Wen', english: 'Who', startMonth: 'March'}
+  {mikmaq: 'Wen', english: 'Who', startMonth: 'March'},
+  {mikmaq: 'Net', english: 'who is it', startMonth: 'March'}
 ]
 
 export async function importWords() {
