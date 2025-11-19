@@ -24,16 +24,7 @@ export function FooterSimple() {
   return (
     <div className={classes.footer}>
       <Container className={classes.inner}>
-      <img
-          src={TerryBot}
-          alt="centered-icon"
-          style={{
-            width: '50px',
-            height: '50px',
-            borderRadius: '50%',
-            objectFit: 'cover'
-          }}
-        />
+
         <Group className={classes.links}>{items}</Group>
       </Container>
     </div>

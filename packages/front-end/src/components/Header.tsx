@@ -33,16 +33,7 @@ export function HeaderSimple() {
   return (
     <header className={classes.header}>
       <Container size="md" className={classes.inner}>
-        <img
-          src={TerryBot}
-          alt="centered-icon"
-          style={{
-            width: '50px',
-            height: '50px',
-            borderRadius: '50%',
-            objectFit: 'cover'
-          }}
-        />
+
         <Group gap={5} visibleFrom="xs">
           {items}
         </Group>
