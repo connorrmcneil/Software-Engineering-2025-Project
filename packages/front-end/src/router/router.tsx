@@ -10,6 +10,7 @@ import {HouseIcon} from '@phosphor-icons/react'
 import {createBrowserRouter, Link, Outlet, RouterProvider} from 'react-router'
 
 import {HeaderSimple} from '@/components/Header'
+import {FooterSimple} from '@/components/Footer'
 import {Dictionary} from '@/components/Dictionary'
 import {AdminPage, ErrorPage, Game1, Game2, HomePage, SigninPage, WordMatchGame} from '@/pages'
 import {adminLoader} from './admin.loader'
@@ -66,6 +67,7 @@ function Layout() {
     <>
     <HeaderSimple />
     <Outlet />
+    <FooterSimple />
     </>
   )
 }
