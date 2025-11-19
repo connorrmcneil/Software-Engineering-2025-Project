@@ -5,27 +5,30 @@
   "private": true,
   "scripts": {
     "dev": "bun run --watch src/main.ts",
-    "seed-db": "bun run prisma/seed.ts"
+    "setup-prisma": "prisma generate && prisma db push && prisma db seed"
+  },
+  "prisma": {
+    "seed": "bun run prisma/seed.ts"
   },
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
     "@types/bcrypt": "^6.0.0",
     "@types/bun": "latest",
     "@types/cors": "^2.8.19",
-    "@types/express": "^5.0.3",
+    "@types/express": "^5.0.5",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
     "@types/multer": "^2.0.0",
-    "prisma": "^6.16.2"
+    "prisma": "^6.19.0"
   },
   "peerDependencies": {
-    "typescript": "^5"
+    "typescript": "^5.8.3"
   },
   "dependencies": {
-    "@prisma/client": "^6.16.2",
+    "@prisma/client": "^6.19.0",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
-    "dotenv": "^17.2.2",
+    "dotenv": "^17.2.3",
     "express": "^5.1.0",
     "joi": "^18.0.1",
     "jsonwebtoken": "^9.0.2",

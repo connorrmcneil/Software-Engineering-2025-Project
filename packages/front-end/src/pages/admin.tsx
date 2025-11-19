@@ -26,10 +26,7 @@ import {Link, useLoaderData, useRevalidator} from 'react-router'
 import {api} from '@/api'
 import AudioButton from '@/components/AudioButton'
 import ImageButton from '@/components/ImageButton'
-
-const url = (path: string) => {
-  return `${window.env.API_URL}/${path}`
-}
+import {toStorageUrl} from '@/utils'
 
 export function AdminPage() {
   const {user, words} = useLoaderData<typeof adminLoader>()
@@ -62,8 +59,8 @@ export function AdminPage() {
       word.mikmaq,
       word.english,
       <Badge variant="light">{word.startMonth}</Badge>,
-      <ImageButton variant="subtle" key={word.id} src={url(word.imagePath)} />,
-      <AudioButton variant="subtle" key={word.id} src={url(word.audioPath)} />,
+      <ImageButton variant="subtle" key={word.id} src={toStorageUrl(word.imagePath)} />,
+      <AudioButton variant="subtle" key={word.id} src={toStorageUrl(word.audioPath)} />,
       <Badge variant="light" c="green">
         {new Date(word.createdAt).toLocaleDateString()}
       </Badge>
@@ -106,12 +103,14 @@ export function AdminPage() {
           </div>
         </Group>
         <Paper withBorder p="md">
-          <Table
-            data={table}
-            highlightOnHover
-            layout="fixed"
-            styles={{thead: {backgroundColor: 'var(--mantine-color-gray-1)'}}}
-          />
+          <Table.ScrollContainer minWidth={1000} maxHeight={500}>
+            <Table
+              data={table}
+              highlightOnHover
+              layout="fixed"
+              styles={{thead: {backgroundColor: 'var(--mantine-color-gray-1)'}}}
+            />
+          </Table.ScrollContainer>
           {!_words.length && (
             <Text c="dimmed" ta="center" mt="md" size="sm">
               No words found
@@ -192,12 +191,12 @@ function CreateWordModal({onClose, ...props}: ModalProps) {
           data={months}
           withAsterisk
           w={150}
-          mb="md"
+          mb="sm"
           key={form.key('startMonth')}
           {...form.getInputProps('startMonth')}
           searchable
         />
-        <Group mb="md" align="flex-start">
+        <Group mb="sm" align="flex-start">
           <TextInput
             label="Mi'kmaq"
             placeholder="Word in Mi'kmaq"
