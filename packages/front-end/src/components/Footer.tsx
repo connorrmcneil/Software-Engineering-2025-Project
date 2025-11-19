@@ -2,10 +2,10 @@ import { Anchor, Container, Group } from '@mantine/core';
 import classes from '@/components/styles/FooterSimple.module.css';
 import TerryBot from '@/assets/images/characters/TerryBot.jpg'
 const links = [
-  { link: '#', label: 'Contact' },
+  { link: '#', label: 'Frequently Asked Questions' },
   { link: '#', label: 'Privacy' },
-  { link: '#', label: 'Blog' },
-  { link: '#', label: 'Careers' },
+  { link: '#', label: 'Terms and Conditions' },
+  { link: '#', label: 'Further Resources' },
 ];
 
 export function FooterSimple() {
