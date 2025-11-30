@@ -1,16 +1,18 @@
 /**
- * Allows for a second attempt at a word before revealing the answer and restarting the game.
+ * Allows for a second attempt at a word before revealing the answer a
+ * nd restarting the game.
  *
  * Author(s):
  * Wenda Tan
- * (Assisted with ChatGPT)
  */
-import {Button, Modal, Stack, Text} from '@mantine/core'
+import { Button, Modal, Stack, Text, Image } from '@mantine/core'
+import { toStorageUrl } from '@/utils' 
 
 interface WrongAnswerModalProps {
   opened: boolean
   firstAttempt: boolean
   correctWord?: string
+  correctImage?: string 
   translation?: string
   onTryAgain: () => void
   onRestart: () => void
@@ -20,6 +22,7 @@ export function WrongAnswerModal({
   opened,
   firstAttempt,
   correctWord,
+  correctImage, 
   translation,
   onTryAgain,
   onRestart
@@ -41,15 +44,31 @@ export function WrongAnswerModal({
           </>
         ) : (
           <>
-            <Text size="lg" fw={500}>
+            <Text size="lg" fw={500} c="green">
               Incorrect again!
             </Text>
+            
+            {correctImage && (
+              <Image 
+                src={toStorageUrl(correctImage)} 
+                alt={correctWord}
+                w={150}
+                h={150}
+                fit="contain"
+                radius="md"
+                style={{ border: '1px solid #eee' }}
+              />
+            )}
+
             <Text size="sm" ta="center">
               The correct word was <b>{correctWord}</b>
               <br />
-              {translation || 'No translation available yet.'}
+              <Text span c="dimmed" size="xs">
+                {translation || 'No translation available yet.'}
+              </Text>
             </Text>
-            <Button color="red" onClick={onRestart}>
+
+            <Button color="green" fullWidth onClick={onRestart}>
               Start a new game
             </Button>
           </>

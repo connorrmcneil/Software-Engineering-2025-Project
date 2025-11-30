@@ -3,8 +3,9 @@ import {GameEndPopup} from '@/components/GameEndPopup'
 export function Game2() {
   return (
     <div>
-      Game2's page!
-      <GameEndPopup />
+      <div>Game2's page!</div>
+      <div>NEED TO IMPORT GAME2 HERE ONCE FINISHED!</div>
+      <div><GameEndPopup /></div>
     </div>
   )
 }
