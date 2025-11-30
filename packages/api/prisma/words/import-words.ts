@@ -66,5 +66,5 @@ export async function importWords() {
     })
   }
 
-  console.log('✅ Words imported')
+  console.log('Words imported')
 }

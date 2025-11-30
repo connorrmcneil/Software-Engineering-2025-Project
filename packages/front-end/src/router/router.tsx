@@ -25,17 +25,13 @@ const router = createBrowserRouter([
         element: <HomePage />
       },
       {
-        path: '/game1',
-        element: <Game1 />
-      },
-      {
-        path: '/game2',
-        element: <Game2 />
-      },
-      {
         path: '/matching-game',
         loader: wordsLoader,
         element: <WordMatchGame />
+      },
+      {
+        path: '/eskasoni-island-game',
+        element: <Game2 />
       }
     ]
   },
@@ -75,9 +71,8 @@ type NavLink = {
 
 const navLinks: NavLink[] = [
   {label: 'Home', href: '/', icon: <HouseIcon size={20} weight="fill" />},
-  {label: 'Game 1', href: '/game1'},
-  {label: 'Game 2', href: '/game2'},
   {label: 'Word Match', href: '/matching-game'},
+  {label: 'Eskasoni Island', href: '/eskasoni-island-game'},
   {label: 'Admin', href: '/admin'}
 ]
 
