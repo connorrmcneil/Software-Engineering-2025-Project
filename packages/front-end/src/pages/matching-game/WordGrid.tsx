@@ -1,6 +1,6 @@
 import type { Word } from '@/types'
 import { BackgroundImage, Box, SimpleGrid, AspectRatio } from '@mantine/core'
-import placeholderImage from '@/assets/images/characters/placeholder.png'
+import placeholderImage from '@/assets/images/items/Random.jpg'
 import gridImage from '@/assets/images/items/Grid.png'
 import { toStorageUrl } from '@/utils'
 
