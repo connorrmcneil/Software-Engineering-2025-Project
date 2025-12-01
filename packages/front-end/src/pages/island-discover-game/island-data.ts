@@ -26,7 +26,7 @@ export interface Animal {
 }
 
 export const ANIMALS: Animal[] = [
-  { id: 'coon', mikmaq: 'Amaljikwej', english: 'Raccoon', image: amaljikwej },
+  { id: 'raccoon', mikmaq: 'Amaljikwej', english: 'Raccoon', image: amaljikwej },
   { id: 'rabbit', mikmaq: 'Apli\'kmuj', english: 'Rabbit', image: aplikmuj },
   { id: 'beaver', mikmaq: 'Kopit', english: 'Beaver', image: kopit },
   { id: 'deer', mikmaq: 'Lentuk', english: 'Deer', image: lentuk },
