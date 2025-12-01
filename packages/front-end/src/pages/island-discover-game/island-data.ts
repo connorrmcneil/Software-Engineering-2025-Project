@@ -49,13 +49,13 @@ export const GAME_LEVELS: Level[] = [
     levelId: 0, 
     mapImage: islandStart, 
     targetAnimal: ANIMALS[0], // Raccoon
-    characterPos: { top: '80%', left: '10%' } 
+    characterPos: { top: '45%', left: '27%' } 
   },
   { 
     levelId: 1, 
     mapImage: island1, 
     targetAnimal: ANIMALS[1], // Rabbit
-    characterPos: { top: '70%', left: '25%' } 
+    characterPos: { top: '65%', left: '25%' } 
   },
   { 
     levelId: 2, 
@@ -67,7 +67,7 @@ export const GAME_LEVELS: Level[] = [
     levelId: 3, 
     mapImage: island3, 
     targetAnimal: ANIMALS[3], // Deer
-    characterPos: { top: '50%', left: '50%' } 
+    characterPos: { top: '40%', left: '40%' } 
   },
   { 
     levelId: 4, 
@@ -79,13 +79,13 @@ export const GAME_LEVELS: Level[] = [
     levelId: 5, 
     mapImage: island5, 
     targetAnimal: ANIMALS[5], // Moose
-    characterPos: { top: '30%', left: '70%' } 
+    characterPos: { top: '55%', left: '60%' } 
   },
   { 
     levelId: 6, 
     mapImage: island6, 
     targetAnimal: ANIMALS[6], // Fox
-    characterPos: { top: '20%', left: '80%' } 
+    characterPos: { top: '35%', left: '75%' } 
   }
 ]
 

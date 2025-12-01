@@ -8,7 +8,7 @@
 
 import type { Month, Word } from '@/types'
 
-import { BackgroundImage, Paper, Select, Stack, Text, SimpleGrid, Box, Title, Group } from '@mantine/core'
+import { BackgroundImage, Paper, Select, Stack, Text, SimpleGrid, Box, Title } from '@mantine/core'
 import { useEffect, useReducer, useState } from 'react'
 import { useLoaderData } from 'react-router'
 
@@ -226,7 +226,7 @@ export function WordMatchGame() {
       <Paper 
         bg="rgba(255, 255, 255, 0.85)" 
         // Responsive width: 100% on mobile, up to 900px on desktop
-        w={{ base: '100%', md: 900 }} 
+        w={{ base: '100%', md: 1200 }} 
         maw="100%"
         p={{ base: 'md', md: 'xl' }} 
         radius="xl"
