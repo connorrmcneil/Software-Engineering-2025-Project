@@ -10,7 +10,7 @@ import {HouseIcon} from '@phosphor-icons/react'
 import {createBrowserRouter, Link, Outlet, RouterProvider} from 'react-router'
 
 import {Dictionary} from '@/components/Dictionary'
-import {AdminPage, ErrorPage, FAQ, Game1, Game2, HomePage, PrivacyPolicy, SigninPage, WordMatchGame} from '@/pages'
+import {AdminPage, ErrorPage, FAQ, HomePage, PrivacyPolicy, SigninPage, WordMatchGame, IslandGamePage} from '@/pages'
 import {adminLoader} from './admin.loader'
 import {signinLoader} from './signin.loader'
 import {wordsLoader} from './words.loader'
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/eskasoni-island-game',
-        element: <Game2 />
+        element: <IslandGamePage />
       }
     ]
   },
