@@ -1,4 +1,8 @@
-// Importing animals, and map layouts for island game.
+/**
+ * Importing animals, and map layouts for island game.
+ * 
+ * Author: Wenda Tan
+ */
 
 //Animals
 import amaljikwej from '@/assets/images/island_game/animals/amaljikwej.png'
@@ -49,43 +53,43 @@ export const GAME_LEVELS: Level[] = [
     levelId: 0, 
     mapImage: islandStart, 
     targetAnimal: ANIMALS[0], // Raccoon
-    characterPos: { top: '45%', left: '27%' } 
+    characterPos: { top: '45%', left: '22%' } 
   },
   { 
     levelId: 1, 
     mapImage: island1, 
     targetAnimal: ANIMALS[1], // Rabbit
-    characterPos: { top: '65%', left: '25%' } 
+    characterPos: { top: '65%', left: '22%' } 
   },
   { 
     levelId: 2, 
     mapImage: island2, 
     targetAnimal: ANIMALS[2], // Beaver
-    characterPos: { top: '60%', left: '40%' } 
+    characterPos: { top: '42%', left: '35%' } 
   },
   { 
     levelId: 3, 
     mapImage: island3, 
     targetAnimal: ANIMALS[3], // Deer
-    characterPos: { top: '40%', left: '40%' } 
+    characterPos: { top: '50%', left: '50%' } 
   },
   { 
     levelId: 4, 
     mapImage: island4, 
     targetAnimal: ANIMALS[4], // Bear
-    characterPos: { top: '40%', left: '60%' } 
+    characterPos: { top: '30%', left: '80%' } 
   },
   { 
     levelId: 5, 
     mapImage: island5, 
     targetAnimal: ANIMALS[5], // Moose
-    characterPos: { top: '55%', left: '60%' } 
+    characterPos: { top: '55%', left: '75%' } 
   },
   { 
     levelId: 6, 
     mapImage: island6, 
     targetAnimal: ANIMALS[6], // Fox
-    characterPos: { top: '35%', left: '75%' } 
+    characterPos: { top: '55%', left: '72%' } 
   }
 ]
 

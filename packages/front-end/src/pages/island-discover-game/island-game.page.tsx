@@ -1,3 +1,9 @@
+/**
+ * Goat Island Eskasoni Animal Game
+ * 
+ * Author: Wenda Tan
+ */
+
 import { useState, useMemo, useRef } from 'react'
 import { 
   Container, 
@@ -45,8 +51,6 @@ export function IslandGamePage() {
   const currentLevel = GAME_LEVELS[currentLevelIdx]
   const isFinalLevel = currentLevelIdx >= GAME_LEVELS.length
 
-  // --- Logic Helpers ---
-
   const quizOptions = useMemo(() => {
     if (isFinalLevel) return []
     const correct = currentLevel.targetAnimal
@@ -61,7 +65,6 @@ export function IslandGamePage() {
     setGameState('playing')
   }
 
-  // NEW: Clears storage and goes back to selection
   const handleChangeCharacter = () => {
     localStorage.removeItem(STORAGE_KEY)
     setCharacter(null)
@@ -92,7 +95,6 @@ export function IslandGamePage() {
   }
 
   const restartGame = () => {
-    // Standard restart keeps the character and stays in 'playing' mode
     setCurrentLevelIdx(0)
     setWrongAttempts(0)
     setShowGameOver(false)
@@ -100,7 +102,6 @@ export function IslandGamePage() {
     setGameState('playing')
   }
 
-  // --- Developer Tool ---
   const handleMapClick = (e: React.MouseEvent) => {
     if (!mapRef.current) return;
     const rect = mapRef.current.getBoundingClientRect();
@@ -114,11 +115,10 @@ export function IslandGamePage() {
     console.log(`top: '${yPercent}%', left: '${xPercent}%'`)
   }
 
-  // --- Renders ---
 
   if (gameState === 'select-char') {
     return (
-      <Container py="xl" size="sm" mih="100dvh" style={{ display: 'flex', alignItems: 'center' }}>
+      <Container py="sm" size="sm" mih="70dvh" style={{ display: 'flex', alignItems: 'center' }}>
         <Stack align="center" gap="xl" w="100%">
           <Title order={1} ta="center">Choose Your Character</Title>
           <Group gap="xl" justify="center" style={{ flexDirection: 'row' }}>
@@ -128,7 +128,7 @@ export function IslandGamePage() {
             </Stack>
             <Stack align="center" onClick={() => handleCharacterSelect('girl')} style={{ cursor: 'pointer', transition: 'transform 0.2s' }}>
               <Image src={girlImg} w={{ base: 120, md: 180 }} />
-              <Button size="lg" color="pink" fullWidth>Girl</Button>
+              <Button size="lg" fullWidth>Girl</Button>
             </Stack>
           </Group>
         </Stack>
@@ -150,15 +150,14 @@ export function IslandGamePage() {
       {/* GAME OVER MODAL */}
       <Modal opened={showGameOver} onClose={() => {}} withCloseButton={false} centered title="Oh no!">
         <Stack align="center">
-          <Text c="red" fw={700} size="xl">Incorrect!</Text>
+          <Text c="green" fw={700} size="xl">Incorrect!</Text>
           <Text ta="center">The correct answer was:</Text>
           <Image src={currentLevel?.targetAnimal.image} w={120} fit="contain" />
           <Text fw={900} size="lg">{currentLevel?.targetAnimal.mikmaq}</Text>
-          <Button fullWidth onClick={restartGame} color="red">Try Again</Button>
+          <Button fullWidth onClick={restartGame} color="green">Try Again</Button>
         </Stack>
       </Modal>
 
-      {/* QUIZ MODAL */}
       <Modal 
         opened={quizOpen} 
         onClose={() => !wrongAttempts && setQuizOpen(false)} 
@@ -169,7 +168,7 @@ export function IslandGamePage() {
       >
         <Stack>
             {wrongAttempts === 1 && (
-                <Text c="red" ta="center" fw={700}>That is not correct. Try again!</Text>
+                <Text c="purple" ta="center" fw={700}>That is not correct. Try again!</Text>
             )}
             <SimpleGrid cols={{ base: 1, sm: 3 }}>
             {quizOptions.map((animal) => (
@@ -193,7 +192,7 @@ export function IslandGamePage() {
       </Modal>
 
       {/* MAP AREA */}
-      <Box maw={1000} mx="auto">
+      <Box maw={1300} mx="auto">
         <Box 
             ref={mapRef}
             onClick={handleMapClick} 

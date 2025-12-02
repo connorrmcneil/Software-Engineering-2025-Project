@@ -72,7 +72,7 @@ type NavLink = {
 const navLinks: NavLink[] = [
   {label: 'Home', href: '/', icon: <HouseIcon size={20} weight="fill" />},
   {label: 'Word Match', href: '/matching-game'},
-  {label: 'Eskasoni Island', href: '/eskasoni-island-game'},
+  {label: 'Goat Island Eskasoni', href: '/eskasoni-island-game'},
   {label: 'Admin', href: '/admin'}
 ]
 
