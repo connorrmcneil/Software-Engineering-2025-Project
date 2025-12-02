@@ -14,5 +14,8 @@
   },
   "workspaces": [
     "packages/*"
-  ]
+  ],
+  "dependencies": {
+    "@tabler/icons-react": "^3.35.0"
+  }
 }
