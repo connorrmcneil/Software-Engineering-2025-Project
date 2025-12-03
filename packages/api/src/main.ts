@@ -39,7 +39,7 @@ function bootstrap() {
 
   // client bundle
   app.use(express.static('client'))
-  app.use('*', async (_req, res) => {
+  app.use('/*', async (_req, res) => {
     return res.sendFile(path.join('client', 'index.html'))
   })
 
