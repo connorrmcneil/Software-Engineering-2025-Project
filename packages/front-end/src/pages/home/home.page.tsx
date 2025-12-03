@@ -1,10 +1,8 @@
-import { Button, Container, Group, Image, List, Text, Title } from '@mantine/core'
-import { useMemo, useState } from 'react'
-import { Link } from 'react-router'
-
 import character1Dance from '@/assets/images/characters/character1-dance.png'
 import character2Dance from '@/assets/images/characters/character2-dance.png'
-import { GameSelectionModal } from '@/components/GameSelection' 
+import { GameSelectionModal } from '@/components/GameSelection'
+import { Button, Group, Image, List, Text, Title } from '@mantine/core'
+import { useMemo, useState } from 'react'
 import classes from './Home.module.css'
 
 export function HomePage() {
@@ -14,11 +12,16 @@ export function HomePage() {
     return Math.random() > 0.5 ? character1Dance : character2Dance
   }, [])
 
+  // Handler to dispatch custom event that opens the dictionary modal
+  const handleOpenDictionary = () => {
+    window.dispatchEvent(new CustomEvent('openDictionary'))
+  }
+
   return (
-    <Container size="xl">
-      <GameSelectionModal 
-        opened={modalOpen} 
-        onClose={() => setModalOpen(false)} 
+    <div size="100%" className={classes.container}>
+      <GameSelectionModal
+        opened={modalOpen}
+        onClose={() => setModalOpen(false)}
       />
 
       <div className={classes.inner}>
@@ -26,7 +29,7 @@ export function HomePage() {
           <Title className={classes.title}>
             Kekina’muek <span className={classes.highlight}>Miꞌkmawiꞌsimk</span>
           </Title>
-          <Text c="dimmed" mt="md">
+          <Text mt="md">
             Learning the Mi'kmaw language
           </Text>
 
@@ -43,18 +46,17 @@ export function HomePage() {
           </List>
 
           <Group mt={30}>
-            <Button 
-              onClick={() => setModalOpen(true)} 
-              radius="xl" 
-              size="md" 
+            <Button
+              onClick={() => setModalOpen(true)}
+              radius="xl"
+              size="md"
               className={classes.control}
             >
               Play
             </Button>
-            
+
             <Button
-              component={Link}
-              to="/dictionary"
+              onClick={handleOpenDictionary}
               variant="default"
               radius="xl"
               size="md"
@@ -66,6 +68,6 @@ export function HomePage() {
         </div>
         <Image src={randomCharacter} className={classes.image} />
       </div>
-    </Container>
+    </div>
   )
 }
