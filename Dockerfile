@@ -2,6 +2,8 @@
 FROM oven/bun:latest
 WORKDIR /app
 
+RUN apt-get update -y && apt-get install -y openssl
+
 COPY packages/api/package.json ./package.json
 COPY packages/api/prisma/schema.prisma ./prisma/schema.prisma
 
