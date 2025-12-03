@@ -11,7 +11,7 @@ const links = [
 
 export function Footer() {
   const items = links.map(link => (
-    <Anchor<'a'> c="dimmed" key={link.label} href={link.link} onClick={event => event.preventDefault()} size="sm">
+    <Anchor<'a'> c="dimmed" key={link.label} href={link.link} size="sm">
       {link.label}
     </Anchor>
   ))
