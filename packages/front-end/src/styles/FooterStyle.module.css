@@ -1,33 +1,33 @@
 .footer {
-    border-top: 2px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
-  }
-  
-  .inner {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-top: var(--mantine-spacing-xl);
-    padding-bottom: var(--mantine-spacing-xl);
-  
-    @media (max-width: $mantine-breakpoint-xs) {
-      flex-direction: column;
-    }
-  }
-  
-  .links {
-    @media (max-width: $mantine-breakpoint-xs) {
-      margin-top: var(--mantine-spacing-md);
-    }
-  }
+  border-top: 2px solid light-dark(var(--mantine-color-gray-2), var(--mantine-color-dark-5));
+}
 
-  .angie {
-    color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
-    font-family: Outfit, var(--mantine-font-family);
-    font-size: 44px;
-    line-height: 1.2;
-    font-weight: 500;
-  
-    @media (max-width: $mantine-breakpoint-xs) {
-      font-size: 28px;
-    }
+.inner {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: var(--mantine-spacing-xl);
+  padding-bottom: var(--mantine-spacing-xl);
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    flex-direction: column;
   }
+}
+
+.links {
+  @media (max-width: $mantine-breakpoint-xs) {
+    margin-top: var(--mantine-spacing-md);
+  }
+}
+
+.angie {
+  color: light-dark(var(--mantine-color-black), var(--mantine-color-white));
+  font-family: Outfit, var(--mantine-font-family);
+  font-size: 44px;
+  line-height: 1.2;
+  font-weight: 500;
+
+  @media (max-width: $mantine-breakpoint-xs) {
+    font-size: 28px;
+  }
+}

@@ -5,14 +5,15 @@
  * Author(s):
  * Wenda Tan
  */
-import { Button, Modal, Stack, Text, Image } from '@mantine/core'
-import { toStorageUrl } from '@/utils' 
+import {Button, Image, Modal, Stack, Text} from '@mantine/core'
+
+import {toStorageUrl} from '@/utils'
 
 interface WrongAnswerModalProps {
   opened: boolean
   firstAttempt: boolean
   correctWord?: string
-  correctImage?: string 
+  correctImage?: string
   translation?: string
   onTryAgain: () => void
   onRestart: () => void
@@ -22,7 +23,7 @@ export function WrongAnswerModal({
   opened,
   firstAttempt,
   correctWord,
-  correctImage, 
+  correctImage,
   translation,
   onTryAgain,
   onRestart
@@ -47,16 +48,16 @@ export function WrongAnswerModal({
             <Text size="lg" fw={500} c="green">
               Incorrect again!
             </Text>
-            
+
             {correctImage && (
-              <Image 
-                src={toStorageUrl(correctImage)} 
+              <Image
+                src={toStorageUrl(correctImage)}
                 alt={correctWord}
                 w={150}
                 h={150}
                 fit="contain"
                 radius="md"
-                style={{ border: '1px solid #eee' }}
+                style={{border: '1px solid #eee'}}
               />
             )}
 
