@@ -15,6 +15,7 @@ export const authLoader = async () => {
     const {data} = await api.get<{user: User}>('/users/me')
     return {user: data.user}
   } catch {
+    localStorage.removeItem('AuthToken')
     throw redirect('/admin/signin')
   }
 }
