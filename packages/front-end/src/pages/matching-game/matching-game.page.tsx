@@ -9,7 +9,7 @@
 import type {Month, Word} from '@/types'
 
 import {BackgroundImage, Box, Paper, Select, SimpleGrid, Stack, Text, Title} from '@mantine/core'
-import {useEffect, useReducer, useState} from 'react'
+import {useEffect, useMemo, useReducer, useState} from 'react'
 import {useLoaderData} from 'react-router'
 
 import MatchingGameBackground from '@/assets/images/items/MatchingGameBackground.jpeg'
@@ -61,16 +61,18 @@ const initialState: GameState = {
 
 export function WordMatchGame() {
   const {words} = useLoaderData<typeof wordsLoader>()
-  const wordsByMonth = words.reduce(
-    (acc, word) => {
-      if (!acc[word.startMonth]) {
-        acc[word.startMonth] = []
-      }
-      acc[word.startMonth].push(word)
-      return acc
-    },
-    {} as Record<Month, Word[]>
-  )
+  const wordsByMonth = useMemo(() => {
+    return words.reduce(
+      (acc, word) => {
+        if (!acc[word.startMonth]) {
+          acc[word.startMonth] = []
+        }
+        acc[word.startMonth].push(word)
+        return acc
+      },
+      {} as Record<Month, Word[]>
+    )
+  }, [words])
 
   const [selectedMonth, setSelectedMonth] = useState<Month>('September')
 
