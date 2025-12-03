@@ -1,10 +1,10 @@
-import { Button, Container, Group, Image, List, Text, Title } from '@mantine/core'
-import { useMemo, useState } from 'react'
-import { Link } from 'react-router'
+import {Button, Container, Group, Image, List, Text, Title} from '@mantine/core'
+import {useMemo, useState} from 'react'
+import {Link} from 'react-router'
 
 import character1Dance from '@/assets/images/characters/character1-dance.png'
 import character2Dance from '@/assets/images/characters/character2-dance.png'
-import { GameSelectionModal } from '@/components/GameSelection' 
+import {GameSelectionModal} from '@/components/GameSelection'
 import classes from './Home.module.css'
 
 export function HomePage() {
@@ -16,11 +16,7 @@ export function HomePage() {
 
   return (
     <Container size="xl">
-      <GameSelectionModal 
-        opened={modalOpen} 
-        onClose={() => setModalOpen(false)} 
-      />
-
+      <GameSelectionModal opened={modalOpen} onClose={() => setModalOpen(false)} />
       <div className={classes.inner}>
         <div className={classes.content}>
           <Title className={classes.title}>
@@ -43,15 +39,10 @@ export function HomePage() {
           </List>
 
           <Group mt={30}>
-            <Button 
-              onClick={() => setModalOpen(true)} 
-              radius="xl" 
-              size="md" 
-              className={classes.control}
-            >
+            <Button onClick={() => setModalOpen(true)} radius="xl" size="md" className={classes.control}>
               Play
             </Button>
-            
+
             <Button
               component={Link}
               to="/dictionary"

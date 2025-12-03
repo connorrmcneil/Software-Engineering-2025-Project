@@ -1,14 +1,24 @@
 import {Button, Flex, Group, Image, Modal, Text} from '@mantine/core'
-import {useDisclosure} from '@mantine/hooks'
 
-import PointPlaceholder from '@/assets/images/icons/terrythumbsup.jpg'
+import PointPlaceholder from '@/assets/images/icons/pointPlaceholder.jpg'
 
-export function GameEndPopup() {
-  const [opened, {open, close}] = useDisclosure(false)
+/**
+ * End of word-match game popup including amount of points earned
+ * and an option to retry or reveal answers. Component includes functionality
+ * for more than 3 words/answers, we were limited to 3 for this project unfortunately.
+ *
+ * @Author Connor Gerrard - 2025
+ */
 
-  // test correct answer amount
-  const correctAnswers = 5
-  const totalWords = 9
+type GameEndPopupProps = {
+  opened: boolean
+  onNewGame: () => void
+}
+
+export function GameEndPopup({opened, onNewGame}: GameEndPopupProps) {
+  // Only allowed 3 words this year so these values are static
+  const correctAnswers = 3
+  const totalWords = 3
 
   // Create an boolean array representing correct/incorrect answers
   const results = Array.from({length: totalWords}, (_, i) => i < correctAnswers)
@@ -17,10 +27,11 @@ export function GameEndPopup() {
     <>
       <Modal
         opened={opened}
-        onClose={close}
+        onClose={onNewGame}
         title="Results"
         centered
-        size="xl"
+        withCloseButton={false}
+        size="lg"
         styles={{
           content: {
             backgroundColor: '#1a1a1a',
@@ -42,7 +53,7 @@ export function GameEndPopup() {
           You got {correctAnswers} out of {totalWords} correct.
         </Text>
 
-        <Flex justify="center" align="center" gap="md" wrap="nowrap" mb="xl">
+        <Flex justify="left" align="center" gap="md" wrap="nowrap" mb="xl">
           {/* iterate over results array, showing PointPlaceholder image for each, faded if incorrect */}
           {results.map((isCorrect, i) => (
             <div>
@@ -50,9 +61,9 @@ export function GameEndPopup() {
                 key={i}
                 src={PointPlaceholder}
                 alt="Correct"
-                width="sm"
-                height="sm"
-                radius="sm"
+                width="s"
+                height="s"
+                radius="s"
                 style={{opacity: isCorrect ? 1 : 0.3}} // faded for wrong ones
               />
             </div>
@@ -60,21 +71,11 @@ export function GameEndPopup() {
         </Flex>
 
         <Group justify="flex-end">
-          {/* placeholder function for reveal answers */}
-          <Button color="red" fw={750} onClick={() => console.log('Reveal answers')}>
-            Reveal Answers
-          </Button>
-          {/* placeholder function for retry */}
-          <Button color="blue" fw={750} onClick={close}>
-            Retry
+          <Button color="blue" fw={750} onClick={onNewGame}>
+            Play Again
           </Button>
         </Group>
       </Modal>
-
-      {/* Button to open modal for testing purposes */}
-      <Button variant="default" onClick={open}>
-        Open modal
-      </Button>
     </>
   )
 }

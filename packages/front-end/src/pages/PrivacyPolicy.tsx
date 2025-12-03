@@ -1,5 +1,10 @@
 import {Anchor, Box, Container, Text, Title} from '@mantine/core'
 
+/**
+ * Privacy Policy page for Asukom -2025
+ *
+ * @Author Connor Gerrard
+ */
 export function PrivacyPolicy() {
   return (
     <Box bg="gray.3" mih="100vh">
