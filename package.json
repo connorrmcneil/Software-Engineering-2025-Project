@@ -18,5 +18,9 @@
   ],
   "dependencies": {
     "@tabler/icons-react": "^3.35.0"
-  }
+  },
+  "trustedDependencies": [
+    "@swc/core",
+    "api"
+  ]
 }
