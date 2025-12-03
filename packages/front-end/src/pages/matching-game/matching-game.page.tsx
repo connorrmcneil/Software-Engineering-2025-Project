@@ -6,20 +6,20 @@
  * - Wenda Tan
  */
 
-import type { Month, Word } from '@/types'
+import type {Month, Word} from '@/types'
 
-import { BackgroundImage, Paper, Select, Stack, Text, SimpleGrid, Box, Title } from '@mantine/core'
-import { useEffect, useReducer, useState } from 'react'
-import { useLoaderData } from 'react-router'
+import {BackgroundImage, Box, Paper, Select, SimpleGrid, Stack, Text, Title} from '@mantine/core'
+import {useEffect, useReducer, useState} from 'react'
+import {useLoaderData} from 'react-router'
 
 import MatchingGameBackground from '@/assets/images/items/MatchingGameBackground.jpeg'
-import { wordsLoader } from '@/router/words.loader'
-import { toStorageUrl } from '@/utils'
-import { GameOverModal } from './GameOverModal'
-import { ScoreBeads } from './ScoreBeads'
-import { WordControls } from './WordControls'
-import { WordGrid } from './WordGrid'
-import { WrongAnswerModal } from './WrongAnswerModal'
+import {wordsLoader} from '@/router/words.loader'
+import {toStorageUrl} from '@/utils'
+import {GameEndPopup} from './GameEndPopup'
+import {ScoreBeads} from './ScoreBeads'
+import {WordControls} from './WordControls'
+import {WordGrid} from './WordGrid'
+import {WrongAnswerModal} from './WrongAnswerModal'
 
 type GameState = {
   index: number
@@ -37,12 +37,12 @@ type GameState = {
 }
 
 type GameAction =
-  | { type: 'SET_INIT'; words: Word[] }
-  | { type: 'GENERATE' }
-  | { type: 'SELECT'; selectedImage: string }
-  | { type: 'TRY_AGAIN' }
-  | { type: 'RESTART' }
-  | { type: 'NEW_GAME' }
+  | {type: 'SET_INIT'; words: Word[]}
+  | {type: 'GENERATE'}
+  | {type: 'SELECT'; selectedImage: string}
+  | {type: 'TRY_AGAIN'}
+  | {type: 'RESTART'}
+  | {type: 'NEW_GAME'}
 
 const initialState: GameState = {
   index: 0,
@@ -60,7 +60,7 @@ const initialState: GameState = {
 }
 
 export function WordMatchGame() {
-  const { words } = useLoaderData<typeof wordsLoader>()
+  const {words} = useLoaderData<typeof wordsLoader>()
   const wordsByMonth = words.reduce(
     (acc, word) => {
       if (!acc[word.startMonth]) {
@@ -143,15 +143,15 @@ export function WordMatchGame() {
 
         // incorrect
         if (state.wrongAttempts === 0) {
-          return { ...state, showWrongModal: true, wrongAttempts: 1 }
+          return {...state, showWrongModal: true, wrongAttempts: 1}
         }
 
-        return { ...state, showSecondModal: true }
+        return {...state, showSecondModal: true}
       }
       case 'TRY_AGAIN':
-        return { ...state, showWrongModal: false }
+        return {...state, showWrongModal: false}
       case 'RESTART':
-        return { ...state, showSecondModal: false, index: 0, successCount: 0, wrongAttempts: 0 }
+        return {...state, showSecondModal: false, index: 0, successCount: 0, wrongAttempts: 0}
       case 'NEW_GAME': {
         const reshuffled = [...state.initWords].sort(() => Math.random() - 0.5)
         return {
@@ -178,18 +178,18 @@ export function WordMatchGame() {
   useEffect(() => {
     const monthWords = wordsByMonth[selectedMonth]?.slice(0, wordCount) || []
     const randomized = [...monthWords].sort(() => Math.random() - 0.5)
-    dispatch({ type: 'SET_INIT', words: randomized })
+    dispatch({type: 'SET_INIT', words: randomized})
   }, [selectedMonth, wordCount])
 
   useEffect(() => {
     if (state.initWords.length > 0 && !state.initialized && !state.gameEnd) {
-      dispatch({ type: 'GENERATE' })
+      dispatch({type: 'GENERATE'})
     }
   }, [state.initWords, state.initialized, state.gameEnd])
 
   useEffect(() => {
     if (state.index < state.initWords.length && !state.gameEnd) {
-      if (!state.initialized) dispatch({ type: 'GENERATE' })
+      if (!state.initialized) dispatch({type: 'GENERATE'})
     } else if (state.index >= state.initWords.length && state.initWords.length > 0) {
     }
   }, [state.index, state.initWords.length, state.initialized, state.gameEnd])
@@ -198,37 +198,36 @@ export function WordMatchGame() {
   const handleSelection = (selectedImage: string) => {
     const isCorrect = selectedImage === state.displayImage
     if (isCorrect && state.displayAudio) new Audio(toStorageUrl(state.displayAudio)).play()
-    dispatch({ type: 'SELECT', selectedImage })
+    dispatch({type: 'SELECT', selectedImage})
   }
 
-  const handleTryAgain = () => dispatch({ type: 'TRY_AGAIN' })
+  const handleTryAgain = () => dispatch({type: 'TRY_AGAIN'})
   const handleRestart = () => {
-    dispatch({ type: 'RESTART' })
-    dispatch({ type: 'NEW_GAME' })
+    dispatch({type: 'RESTART'})
+    dispatch({type: 'NEW_GAME'})
   }
 
   const playAudio = () => {
     if (state.displayAudio) new Audio(toStorageUrl(state.displayAudio)).play()
   }
 
-  const newGame = () => dispatch({ type: 'NEW_GAME' })
+  const newGame = () => dispatch({type: 'NEW_GAME'})
 
   const roundDisplay = `${state.index}/${wordCount}`
 
-
   return (
-    <BackgroundImage 
-      h="var(--app-height)" 
+    <BackgroundImage
+      h="var(--app-height)"
       src={MatchingGameBackground}
-      p={{ base: 'xs', sm: 'md', md: 'xl' }} 
-      style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      p={{base: 'xs', sm: 'md', md: 'xl'}}
+      style={{display: 'flex', alignItems: 'center', justifyContent: 'center'}}
     >
-      <Paper 
-        bg="rgba(255, 255, 255, 0.85)" 
+      <Paper
+        bg="rgba(255, 255, 255, 0.85)"
         // Responsive width: 100% on mobile, up to 900px on desktop
-        w={{ base: '100%', md: 1200 }} 
+        w={{base: '100%', md: 1200}}
         maw="100%"
-        p={{ base: 'md', md: 'xl' }} 
+        p={{base: 'md', md: 'xl'}}
         radius="xl"
         shadow="xl"
       >
@@ -241,7 +240,7 @@ export function WordMatchGame() {
           </Text>
         </Stack>
 
-        <GameOverModal opened={state.gameEnd} score={state.successCount} onNewGame={newGame} />
+        <GameEndPopup opened={state.gameEnd} onNewGame={newGame} />
 
         <WrongAnswerModal
           opened={state.showWrongModal}
@@ -264,11 +263,10 @@ export function WordMatchGame() {
           - Mobile: 1 column (stacked info and grid)
           - On Desktop:2 columns (info to left, grid to right)
         */}
-        <SimpleGrid cols={{ base: 1, md: 2 }} spacing={{ base: 'lg', md: 'xl' }}>
-          
+        <SimpleGrid cols={{base: 1, md: 2}} spacing={{base: 'lg', md: 'xl'}}>
           {/* Left */}
           <Stack justify="flex-start" gap="lg">
-             <Select
+            <Select
               label="Select month"
               value={selectedMonth}
               onChange={value => setSelectedMonth((value as Month) || 'September')}
@@ -282,27 +280,24 @@ export function WordMatchGame() {
             <Box>
               {state.successCount > 0 && (
                 <Stack align="center" gap="xs">
-                   <Text size="sm" fw={500} c="dimmed">Score</Text>
-                   <ScoreBeads score={state.successCount} />
+                  <Text size="sm" fw={500} c="dimmed">
+                    Score
+                  </Text>
+                  <ScoreBeads score={state.successCount} />
                 </Stack>
               )}
             </Box>
 
             {/* Use a Card look for the active word control */}
             <Paper withBorder p="md" radius="md" bg="white">
-               <WordControls 
-                  displayText={state.displayText} 
-                  roundDisplay={roundDisplay} 
-                  playAudio={playAudio} 
-               />
+              <WordControls displayText={state.displayText} roundDisplay={roundDisplay} playAudio={playAudio} />
             </Paper>
           </Stack>
 
           {/* Grid */}
           <Box>
-             <WordGrid words={state.boxes} handleSelection={handleSelection} />
+            <WordGrid words={state.boxes} handleSelection={handleSelection} />
           </Box>
-          
         </SimpleGrid>
       </Paper>
     </BackgroundImage>

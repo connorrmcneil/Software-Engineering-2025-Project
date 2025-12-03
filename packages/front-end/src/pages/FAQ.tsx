@@ -1,5 +1,10 @@
 import {Box, Container, Text, Title} from '@mantine/core'
 
+/**
+ * Facts & Question page for Asukom
+ *
+ * @Author Connor Gerrard - 2025
+ */
 export function FAQ() {
   return (
     <Box bg="gray.3" mih="100vh">

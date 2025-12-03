@@ -5,14 +5,15 @@
  * Author(s):
  * Wenda Tan
  */
-import { Button, Modal, Stack, Text, Image } from '@mantine/core'
-import { toStorageUrl } from '@/utils' 
+import {Button, Image, Modal, Stack, Text} from '@mantine/core'
+
+import {toStorageUrl} from '@/utils'
 
 interface WrongAnswerModalProps {
   opened: boolean
   firstAttempt: boolean
   correctWord?: string
-  correctImage?: string 
+  correctImage?: string
   translation?: string
   onTryAgain: () => void
   onRestart: () => void
@@ -22,7 +23,7 @@ export function WrongAnswerModal({
   opened,
   firstAttempt,
   correctWord,
-  correctImage, 
+  correctImage,
   translation,
   onTryAgain,
   onRestart
@@ -32,31 +33,31 @@ export function WrongAnswerModal({
       <Stack align="center" gap="md">
         {firstAttempt ? (
           <>
-            <Text size="lg" fw={500}>
+            <Text size="lg" fw={500} color="yellow">
               That's not the right word!
             </Text>
             <Text size="sm" c="dimmed">
               Try again.
             </Text>
-            <Button color="blue" onClick={onTryAgain}>
+            <Button color="yellow" onClick={onTryAgain}>
               Okay
             </Button>
           </>
         ) : (
           <>
-            <Text size="lg" fw={500} c="green">
+            <Text size="lg" fw={500} color="yellow">
               Incorrect again!
             </Text>
-            
+
             {correctImage && (
-              <Image 
-                src={toStorageUrl(correctImage)} 
+              <Image
+                src={toStorageUrl(correctImage)}
                 alt={correctWord}
                 w={150}
                 h={150}
                 fit="contain"
                 radius="md"
-                style={{ border: '1px solid #eee' }}
+                style={{border: '1px solid #eee'}}
               />
             )}
 
@@ -68,7 +69,7 @@ export function WrongAnswerModal({
               </Text>
             </Text>
 
-            <Button color="green" fullWidth onClick={onRestart}>
+            <Button color="yellow" fullWidth onClick={onRestart}>
               Start a new game
             </Button>
           </>
