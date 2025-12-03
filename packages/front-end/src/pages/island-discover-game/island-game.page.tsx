@@ -124,11 +124,11 @@ export function IslandGamePage() {
           <Group gap="xl" justify="center" style={{ flexDirection: 'row' }}>
             <Stack align="center" onClick={() => handleCharacterSelect('boy')} style={{ cursor: 'pointer', transition: 'transform 0.2s' }}>
               <Image src={boyImg} w={{ base: 120, md: 180 }} />
-              <Button size="lg" fullWidth>Boy</Button>
+              <Button size="lg" fullWidth>Select</Button>
             </Stack>
             <Stack align="center" onClick={() => handleCharacterSelect('girl')} style={{ cursor: 'pointer', transition: 'transform 0.2s' }}>
               <Image src={girlImg} w={{ base: 120, md: 180 }} />
-              <Button size="lg" fullWidth>Girl</Button>
+              <Button size="lg" fullWidth>Select</Button>
             </Stack>
           </Group>
         </Stack>
