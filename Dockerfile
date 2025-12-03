@@ -2,7 +2,7 @@
 FROM oven/bun:alpine
 WORKDIR /app
 
-COPY packages/api/package.json packages/api/bun.lock .
+COPY packages/api/package.json .
 RUN bun install --production
 
 COPY packages/api/prisma/schema.prisma ./prisma/schema.prisma
