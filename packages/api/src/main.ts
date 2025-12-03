@@ -1,5 +1,6 @@
 import 'dotenv/config' // load env variables from a .env file
 
+import path from 'path'
 import cors from 'cors'
 import express from 'express'
 import morgan from 'morgan'
@@ -36,8 +37,13 @@ function bootstrap() {
     app.use(cors({origin: process.env.ORIGIN}))
   }
 
-  // mounted directories
+  // client bundle
   app.use(express.static('client'))
+  app.use('*', async (_req, res) => {
+    return res.sendFile(path.join('client', 'index.html'))
+  })
+
+  // public assets
   app.use('/public', express.static('public'))
 
   // handlers from other files

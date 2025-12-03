@@ -4,7 +4,8 @@
   "devDependencies": {
     "@ianvs/prettier-plugin-sort-imports": "^4.7.0",
     "concurrently": "^9.2.1",
-    "prettier": "^3.6.2"
+    "prettier": "^3.6.2",
+    "typescript": "^5.9.3"
   },
   "private": true,
   "scripts": {
@@ -16,9 +17,6 @@
   "workspaces": [
     "packages/*"
   ],
-  "dependencies": {
-    "@tabler/icons-react": "^3.35.0"
-  },
   "trustedDependencies": [
     "@swc/core",
     "api"

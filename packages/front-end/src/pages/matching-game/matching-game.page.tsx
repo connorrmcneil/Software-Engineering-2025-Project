@@ -179,7 +179,7 @@ export function WordMatchGame() {
     const monthWords = wordsByMonth[selectedMonth]?.slice(0, wordCount) || []
     const randomized = [...monthWords].sort(() => Math.random() - 0.5)
     dispatch({type: 'SET_INIT', words: randomized})
-  }, [selectedMonth, wordCount])
+  }, [wordsByMonth, selectedMonth, wordCount])
 
   useEffect(() => {
     if (state.initWords.length > 0 && !state.initialized && !state.gameEnd) {
@@ -188,9 +188,8 @@ export function WordMatchGame() {
   }, [state.initWords, state.initialized, state.gameEnd])
 
   useEffect(() => {
-    if (state.index < state.initWords.length && !state.gameEnd) {
-      if (!state.initialized) dispatch({type: 'GENERATE'})
-    } else if (state.index >= state.initWords.length && state.initWords.length > 0) {
+    if (state.index < state.initWords.length && !state.gameEnd && !state.initialized) {
+      dispatch({type: 'GENERATE'})
     }
   }, [state.index, state.initWords.length, state.initialized, state.gameEnd])
 
