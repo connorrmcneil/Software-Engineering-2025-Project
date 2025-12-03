@@ -5,7 +5,10 @@
   "private": true,
   "scripts": {
     "dev": "bun run --watch src/main.ts",
-    "setup-prisma": "prisma generate && prisma db push && prisma db seed"
+    "setup-prisma": "prisma generate && prisma db push && prisma db seed",
+    "build": "bun build src --bundle --outfile dist/server.js --minify --target bun",
+    "postinstall": "prisma generate",
+    "start": "prisma migrate deploy && bun run dist/server.js"
   },
   "prisma": {
     "seed": "bun run prisma/seed.ts"
@@ -18,13 +21,13 @@
     "@types/express": "^5.0.5",
     "@types/jsonwebtoken": "^9.0.10",
     "@types/morgan": "^1.9.10",
-    "@types/multer": "^2.0.0",
-    "prisma": "^6.19.0"
+    "@types/multer": "^2.0.0"
   },
   "peerDependencies": {
     "typescript": "^5.8.3"
   },
   "dependencies": {
+    "prisma": "^6.19.0",
     "@prisma/client": "^6.19.0",
     "bcrypt": "^6.0.0",
     "cors": "^2.8.5",
