@@ -10,7 +10,7 @@ import {users} from './controllers/users'
 import {words} from './controllers/words'
 
 const envSchema = z.looseObject({
-  PORT: z.int().min(1).max(65535).optional(),
+  PORT: z.string().optional(),
   DATABASE_URL: z.url(),
   JWT_SECRET: z.string().min(10),
   ORIGIN: z.url().optional()
