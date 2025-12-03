@@ -1,20 +1,32 @@
-import {Anchor} from '@mantine/core'
-import {Link} from 'react-router'
+import {Anchor, Container, Group, Text} from '@mantine/core'
+import {FeatherIcon} from '@phosphor-icons/react'
+
+import classes from '@/styles/FooterStyle.module.css'
 
 const links = [
-  {link: '/faq', label: 'FAQ'},
-  {link: '/privacypolicy', label: 'Privacy'}
+  {link: '/faq', label: 'Frequently Asked Questions'},
+  {link: '/privacypolicy', label: 'Privacy Policy'},
+  {link: '/admin', label: 'Admin Panel'}
 ]
 
 export function Footer() {
+  const items = links.map(link => (
+    <Anchor<'a'> c="dimmed" key={link.label} href={link.link} onClick={event => event.preventDefault()} size="sm">
+      {link.label}
+    </Anchor>
+  ))
+
   return (
-    <>
-      <div>Mikwite'tmk+t Angie</div>
-      {links.map(link => (
-        <Anchor component={Link} to={link.link} c="dimmed" key={link.label} size="s">
-          {link.label}
-        </Anchor>
-      ))}
-    </>
+    <div className={classes.footer}>
+      <Container className={classes.inner}>
+        <Group gap="sm">
+          <FeatherIcon size="32" weight="duotone" color="var(--mantine-color-yellow-6)" />
+          <Text fw="bold" size="lg" fs="italic">
+            Mikwite'tmk+t Angie
+          </Text>
+        </Group>
+        <Group className={classes.links}>{items}</Group>
+      </Container>
+    </div>
   )
 }
