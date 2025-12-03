@@ -2,7 +2,7 @@
  * Script to create the default admin user.
  */
 
-import {hash} from 'bcrypt'
+import {hash} from 'bcryptjs'
 
 import {PrismaClient} from '@/prisma/client'
 
@@ -21,6 +21,6 @@ export async function createDefaultUser() {
 
   await prisma.user.findUnique({where: {username: 'admin'}})
   console.log('✅ Added default user into the database')
-  console.log(JSON.stringify({ name: 'Admin User', username: 'admin', password: 'admin' }))
+  console.log(JSON.stringify({name: 'Admin User', username: 'admin', password: 'admin'}))
   await prisma.$disconnect()
 }

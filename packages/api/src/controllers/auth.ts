@@ -1,4 +1,4 @@
-import {compare} from 'bcrypt'
+import {compare} from 'bcryptjs'
 import {Router} from 'express'
 import {sign} from 'jsonwebtoken'
 
