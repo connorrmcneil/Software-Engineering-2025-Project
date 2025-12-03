@@ -37,19 +37,19 @@ function bootstrap() {
     app.use(cors({origin: process.env.ORIGIN}))
   }
 
-  // client bundle
-  app.use(express.static('client'))
-  app.get('/*splat', async (_req, res) => {
-    return res.sendFile(path.join('client', 'index.html'))
-  })
-
-  // public assets
-  app.use('/public', express.static('public'))
-
   // handlers from other files
   app.use('/api/words', words)
   app.use('/api/auth', auth)
   app.use('/api/users', users)
+
+  // public assets
+  app.use('/public', express.static('public'))
+
+  // client bundle
+  app.use(express.static('client'))
+  app.get('/*splat', async (_req, res) => {
+    return res.sendFile(path.join(process.cwd(), 'client', 'index.html'))
+  })
 
   // start server
   const port = process.env.PORT || 5050
