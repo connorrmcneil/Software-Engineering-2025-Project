@@ -77,6 +77,22 @@ words.patch('/:wordId', requireAuth, upload, async (req, res) => {
 
   const {imagePath, audioPath} = getFiles(req)
 
+  if (imagePath) {
+    const {imagePath: oldImagePath} = await prisma.word.findUniqueOrThrow({
+      where: {id: wordId},
+      select: {imagePath: true}
+    })
+    fs.rmSync(path.join('public', oldImagePath))
+  }
+
+  if (audioPath) {
+    const {audioPath: oldAudioPath} = await prisma.word.findUniqueOrThrow({
+      where: {id: wordId},
+      select: {audioPath: true}
+    })
+    fs.rmSync(path.join('public', oldAudioPath))
+  }
+
   const word = await prisma.word.update({where: {id: wordId}, data: {...data, imagePath, audioPath}})
   return res.json({word})
 })
