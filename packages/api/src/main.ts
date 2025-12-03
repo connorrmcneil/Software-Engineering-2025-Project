@@ -33,17 +33,15 @@ function bootstrap() {
   app.use(express.urlencoded({extended: true}))
   app.use(cors({origin: process.env.ORIGIN}))
   app.use(morgan('tiny'))
-  app.use(express.static('public'))
 
-  // routes
-  app.get('/', (_req, res) => {
-    return res.json({status: 'ok'}) // health check
-  })
+  // mounted directories
+  app.use(express.static('client'))
+  app.use('/public', express.static('public'))
 
   // handlers from other files
-  app.use('/words', words)
-  app.use('/auth', auth)
-  app.use('/users', users)
+  app.use('/api/words', words)
+  app.use('/api/auth', auth)
+  app.use('/api/users', users)
 
   // start server
   const port = process.env.PORT || 5050

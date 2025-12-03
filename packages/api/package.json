@@ -1,12 +1,12 @@
 {
   "name": "api",
-  "module": "main.ts",
+  "module": "src/main.ts",
   "type": "module",
   "private": true,
   "scripts": {
     "dev": "bun run --watch src/main.ts",
     "setup-prisma": "prisma generate && prisma db push && prisma db seed",
-    "build": "bun build src --bundle --outfile dist/server.js --minify --target bun",
+    "build": "bun build src/main.ts --bundle --outfile dist/server.js --minify --target bun",
     "postinstall": "prisma generate",
     "start": "prisma migrate deploy && bun run dist/server.js"
   },
