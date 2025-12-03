@@ -1,5 +1,5 @@
 # install dependencies
-FROM oven/bun:alpine
+FROM oven/bun:latest
 WORKDIR /app
 
 COPY packages/api/package.json ./package.json
