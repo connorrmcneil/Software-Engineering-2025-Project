@@ -1,6 +1,6 @@
 namespace globalThis {
   interface Window {
-    env: {
+    env?: {
       API_URL: string
     }
   }

@@ -4,5 +4,5 @@
  * @returns url
  */
 export const toStorageUrl = (path: string) => {
-  return `${window.env.API_URL}/public/${path}`
+  return `${window.env?.API_URL ?? ''}/public/${path}`
 }

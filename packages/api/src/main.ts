@@ -1,28 +1,27 @@
+import 'dotenv/config' // load env variables from a .env file
+
 import cors from 'cors'
 import express from 'express'
 import morgan from 'morgan'
-
-import 'dotenv/config' // load env variables from a .env file
-
-import Joi from 'joi'
+import z from 'zod'
 
 import {auth} from './controllers/auth'
 import {users} from './controllers/users'
 import {words} from './controllers/words'
 
+const envSchema = z.looseObject({
+  PORT: z.int().min(1).max(65535).optional(),
+  DATABASE_URL: z.url(),
+  JWT_SECRET: z.string().min(10),
+  ORIGIN: z.url().optional()
+})
+
 function bootstrap() {
   // validate environment variables
-  const envSchema = Joi.object({
-    PORT: Joi.number().integer().min(1).max(65535).default(5050),
-    DATABASE_URL: Joi.string().uri().required(),
-    JWT_SECRET: Joi.string().min(10).required(),
-    ORIGIN: Joi.string().uri().required()
-  }).unknown(true)
-
-  const {error} = envSchema.validate(process.env)
+  const {error} = envSchema.safeParse(process.env)
   if (error) {
     console.error('Invalid environment variables')
-    console.error(error.message)
+    console.error(z.prettifyError(error))
     process.exit(1)
   }
 
@@ -31,8 +30,11 @@ function bootstrap() {
   // global middlewares
   app.use(express.json())
   app.use(express.urlencoded({extended: true}))
-  app.use(cors({origin: process.env.ORIGIN}))
   app.use(morgan('tiny'))
+
+  if (process.env.ORIGIN) {
+    app.use(cors({origin: process.env.ORIGIN}))
+  }
 
   // mounted directories
   app.use(express.static('client'))
@@ -44,7 +46,7 @@ function bootstrap() {
   app.use('/api/users', users)
 
   // start server
-  const port = process.env.PORT || 5050
+  const port = process.env.PORT
   app.listen(port, () => console.log(`✅ Server running on port ${port}`))
 }
 
