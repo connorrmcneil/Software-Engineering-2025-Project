@@ -27,8 +27,6 @@
   line-height: 1.2;
   font-weight: 500;
 
-
-
   @media (max-width: $mantine-breakpoint-xs) {
     font-size: 28px;
   }
