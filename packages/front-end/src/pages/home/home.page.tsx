@@ -1,4 +1,4 @@
-import {Button, Container, Group, Image, List, Text, Title, Stack} from '@mantine/core'
+import {Button, Container, Group, Image, List, Stack, Text, Title} from '@mantine/core'
 import {useMemo, useState} from 'react'
 import {Link} from 'react-router'
 

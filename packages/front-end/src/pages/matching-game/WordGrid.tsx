@@ -56,7 +56,7 @@ export function WordGrid({words, handleSelection}: WordGridProps) {
 
 // --- Styles ---
 
-/** * Shared styles for both active panels and placeholders 
+/** * Shared styles for both active panels and placeholders
  * to ensure consistent alignment.
  */
 const panelStyle: React.CSSProperties = {

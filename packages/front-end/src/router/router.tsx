@@ -6,7 +6,6 @@
  * (Originally John's Code)
  */
 
-import {Box} from '@mantine/core'
 import {createBrowserRouter, Outlet, RouterProvider} from 'react-router'
 
 import {Footer} from '@/components/Footer'
@@ -67,10 +66,8 @@ export function Router() {
 function Layout() {
   return (
     <>
-      <Box h="100vh">
-        <Header />
-        <Outlet />
-      </Box>
+      <Header />
+      <Outlet />
       <Footer />
     </>
   )
