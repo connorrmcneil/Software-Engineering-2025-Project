@@ -1,13 +1,13 @@
 /**
  * Word Audio & Game HUD Component
  *
- * A control bar that sits above the game grid. It provides the 
- * primary user interaction for hearing the word, viewing the text hint, 
+ * A control bar that sits above the game grid. It provides the
+ * primary user interaction for hearing the word, viewing the text hint,
  * and tracking game progress.
  *
  * Author: Wenda Tan
  */
-import {Button, Group, Text, Stack} from '@mantine/core'
+import {Button, Group, Stack, Text} from '@mantine/core'
 
 interface WordControlsProps {
   /** The text to display (usually the target word, hint, or translation) */

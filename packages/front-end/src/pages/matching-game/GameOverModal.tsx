@@ -28,7 +28,7 @@ export function GameOverModal({opened, score, onNewGame}: GameOverModalProps) {
       onClose={() => {}}
       title={
         <Text size="xl" fw={700} ta="center" w="100%">
-          Kelulktelatekn 
+          Kelulktelatekn
         </Text>
       }
       centered

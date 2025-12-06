@@ -126,7 +126,7 @@ function GameOptionCard({to, title, description, color, icon}: GameOptionCardPro
             <Text span fw={700} lh={1.2}>
               almila'si
             </Text>
-            <Text span size="10px" fw={400} lh={1} style={{ opacity: 0.8 }}>
+            <Text span size="10px" fw={400} lh={1} style={{opacity: 0.8}}>
               play
             </Text>
           </Stack>
@@ -135,4 +135,3 @@ function GameOptionCard({to, title, description, color, icon}: GameOptionCardPro
     </Paper>
   )
 }
-

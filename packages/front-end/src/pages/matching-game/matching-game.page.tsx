@@ -18,33 +18,34 @@ import type {Month, Word} from '@/types'
 import {BackgroundImage, Box, Paper, Select, SimpleGrid, Stack, Text, Title} from '@mantine/core'
 import {useEffect, useMemo, useReducer, useState} from 'react'
 import {useLoaderData} from 'react-router'
+
 import MatchingGameBackground from '@/assets/images/items/MatchingGameBackground.jpeg'
 import {wordsLoader} from '@/router/words.loader'
 import {toStorageUrl} from '@/utils'
+import {CorrectAnswerModal} from './CorrectAnswerModal'
 import {GameEndPopup} from './GameEndPopup'
 import {ScoreBeads} from './ScoreBeads'
 import {WordControls} from './WordControls'
 import {WordGrid} from './WordGrid'
 import {WrongAnswerModal} from './WrongAnswerModal'
-import {CorrectAnswerModal} from './CorrectAnswerModal'
 
 /**
  * GameState: The single source of truth for the game's current status.
  */
 type GameState = {
-index: number           // Current level/word index (0 to totalWords - 1)
-  initWords: Word[]       // The shuffled list of words for the selected month
-  boxes: Word[]           // The 9 items currently displayed in the grid
-  displayText: string     // The target word (Mik'maq) shown to the user
-  displayImage: string    // The correct image path (used for validation)
-  displayAudio: string    // The correct audio path
-  successCount: number    // How many levels passed successfully
-  gameEnd: boolean        // True if all words in the month are completed
-  wrongAttempts: number   // 0 = fresh, 1 = warning shown
+  index: number // Current level/word index (0 to totalWords - 1)
+  initWords: Word[] // The shuffled list of words for the selected month
+  boxes: Word[] // The 9 items currently displayed in the grid
+  displayText: string // The target word (Mik'maq) shown to the user
+  displayImage: string // The correct image path (used for validation)
+  displayAudio: string // The correct audio path
+  successCount: number // How many levels passed successfully
+  gameEnd: boolean // True if all words in the month are completed
+  wrongAttempts: number // 0 = fresh, 1 = warning shown
   showWrongModal: boolean // Controls visibility of the "Try Again" modal
-  showSecondModal: boolean// Controls visibility of the "Game Over" modal
+  showSecondModal: boolean // Controls visibility of the "Game Over" modal
   showSuccessModal: boolean // Controls visibility of the "Correct Answer" modal
-  initialized: boolean    // Prevents regeneration during renders
+  initialized: boolean // Prevents regeneration during renders
 }
 
 // Used for translated months
@@ -54,7 +55,7 @@ const MONTH_TRANSLATIONS: Record<string, string> = {
   November: "keptekewiku's",
   December: "kesikewiku's",
   January: "punamujuiku's",
-  February: "apuknajit",
+  February: 'apuknajit',
   March: "Si'ko'ku's"
 }
 
@@ -62,13 +63,13 @@ const MONTH_TRANSLATIONS: Record<string, string> = {
  * GameAction: All possible events that can change the state.
  */
 type GameAction =
-  | { type: 'SET_INIT'; words: Word[] }          // Load a new month of words
-  | { type: 'GENERATE' }                         // Build the grid for the current round
-  | { type: 'SELECT'; selectedImage: string }    // Player clicked an image
-  | { type: 'TRY_AGAIN' }                        // Player closed the warning modal
-  | { type: 'RESTART' }                          // Player chose to restart the specific level
-  | { type: 'NEW_GAME' }                         // Player chose to restart the whole month
-  | { type: 'NEXT_WORD' }                        // Player chose to proceed to the next word
+  | {type: 'SET_INIT'; words: Word[]} // Load a new month of words
+  | {type: 'GENERATE'} // Build the grid for the current round
+  | {type: 'SELECT'; selectedImage: string} // Player clicked an image
+  | {type: 'TRY_AGAIN'} // Player closed the warning modal
+  | {type: 'RESTART'} // Player chose to restart the specific level
+  | {type: 'NEW_GAME'} // Player chose to restart the whole month
+  | {type: 'NEXT_WORD'} // Player chose to proceed to the next word
 
 const initialState: GameState = {
   index: 0,
@@ -110,13 +111,13 @@ export function WordMatchGame() {
   const [selectedMonth, setSelectedMonth] = useState<Month>('September')
 
   /**
-   * Generates the 3x3 grid layout (9 slots total). 
+   * Generates the 3x3 grid layout (9 slots total).
    * Logic:
    * 1. Identify the Correct Word (Target).
    * 2. Calculate how many "Blank" panels are needed (Total 9 slots).
    * 3. Pick random "Distractor" words from the remaining list.
    * 4. Shuffle everything together.
-   * 
+   *
    * This will most likely have to be changed in the future to account for x words per month.**
    */
   const generateGrid = (initWords: Word[], index: number) => {
@@ -181,9 +182,9 @@ export function WordMatchGame() {
         if (isCorrect) {
           return {
             ...state,
-            successCount: state.successCount + 1, // Update beads 
+            successCount: state.successCount + 1, // Update beads
             wrongAttempts: 0,
-            showSuccessModal: true 
+            showSuccessModal: true
           }
         }
         // incorrect
@@ -196,13 +197,13 @@ export function WordMatchGame() {
       case 'NEXT_WORD': {
         const nextIndex = state.index + 1
         const gameEnd = nextIndex >= state.initWords.length
-        
+
         return {
-           ...state,
-           showSuccessModal: false, // Close modal
-           index: nextIndex,        // Move to next word
-           gameEnd: gameEnd,
-           initialized: false       // Trigger regeneration
+          ...state,
+          showSuccessModal: false, // Close modal
+          index: nextIndex, // Move to next word
+          gameEnd: gameEnd,
+          initialized: false // Trigger regeneration
         }
       }
       case 'TRY_AGAIN':
@@ -257,7 +258,7 @@ export function WordMatchGame() {
   }, [state.index, state.initWords.length, state.initialized, state.gameEnd])
 
   const handleNextWord = () => {
-     dispatch({type: 'NEXT_WORD'})
+    dispatch({type: 'NEXT_WORD'})
   }
 
   // Correct/Incorrect Selection
@@ -309,10 +310,7 @@ export function WordMatchGame() {
         {/* 1. Victory Popup (End of Month) */}
         <GameEndPopup opened={state.gameEnd} onNewGame={newGame} />
 
-        <CorrectAnswerModal 
-           opened={state.showSuccessModal}
-           onNext={handleNextWord}
-        />
+        <CorrectAnswerModal opened={state.showSuccessModal} onNext={handleNextWord} />
 
         {/* 2. Warning Modal */}
         <WrongAnswerModal
@@ -343,14 +341,13 @@ export function WordMatchGame() {
               label="Select month"
               value={selectedMonth}
               onChange={value => setSelectedMonth((value as Month) || 'September')}
-              
               data={Object.entries(wordsByMonth).map(([month]) => {
                 const mikmaqName = MONTH_TRANSLATIONS[month] || month
                 const shortEnglish = month.slice(0, 3)
-                
+
                 return {
-                  value: month, 
-                  label: `${mikmaqName} (${shortEnglish})` 
+                  value: month,
+                  label: `${mikmaqName} (${shortEnglish})`
                 }
               })}
               w="100%"

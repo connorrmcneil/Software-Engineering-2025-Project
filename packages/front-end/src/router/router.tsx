@@ -6,9 +6,7 @@
  * (Originally John's Code)
  */
 
-import {AppShell, Button, Group} from '@mantine/core'
-import {HouseIcon} from '@phosphor-icons/react'
-import {createBrowserRouter, Link, Outlet, RouterProvider} from 'react-router'
+import {createBrowserRouter, Outlet, RouterProvider} from 'react-router'
 
 import {Footer} from '@/components/Footer'
 import {Header} from '@/components/Header'
@@ -68,9 +66,9 @@ export function Router() {
 function Layout() {
   return (
     <>
-    <Header />
-    <Outlet />
-    <Footer />
+      <Header />
+      <Outlet />
+      <Footer />
     </>
   )
 }

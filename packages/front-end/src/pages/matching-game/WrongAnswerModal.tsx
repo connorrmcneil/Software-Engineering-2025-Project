@@ -35,7 +35,7 @@ export function WrongAnswerModal({
   onRestart
 }: WrongAnswerModalProps) {
   return (
-    // If it's just a warning, closing returns to game. 
+    // If it's just a warning, closing returns to game.
     // If it's game over, closing should restart.
     <Modal opened={opened} onClose={firstAttempt ? onTryAgain : onRestart} centered radius="lg">
       <Stack align="center" gap="md">
