@@ -1,4 +1,4 @@
-import {Button, Container, Group, Image, List, Text, Title} from '@mantine/core'
+import {Button, Container, Group, Image, List, Text, Title, Stack} from '@mantine/core'
 import {useMemo, useState} from 'react'
 import {Link} from 'react-router'
 
@@ -40,7 +40,14 @@ export function HomePage() {
 
           <Group mt={30}>
             <Button onClick={() => setModalOpen(true)} radius="xl" size="md" className={classes.control}>
-              Play
+              <Stack gap={0} align="center">
+                <Text span fw={700} lh={1.2}>
+                  almila'si
+                </Text>
+                <Text span size="10px" fw={200} lh={1}>
+                  play
+                </Text>
+              </Stack>
             </Button>
 
             <Button
