@@ -1,20 +1,26 @@
 /**
- * Allows for a second attempt at a word before revealing the answer a
- * nd restarting the game.
+ * Wrong Answer Feedback Modal
  *
- * Author(s):
- * Wenda Tan
+ * A reusable modal that handles user feedback when an incorrect
+ * option is selected. It features a two-strike system:
+ * 1. First Attempt: Displays a warning to try again.
+ * 2. Second Attempt: Displays the "Game Over" state, reveals the correct answer,
+ * and prompts the user to restart.
+ *
+ * Author: Wenda Tan
  */
 import {Button, Image, Modal, Stack, Text} from '@mantine/core'
 
 import {toStorageUrl} from '@/utils'
 
+// --- Interface Definitions ---
 interface WrongAnswerModalProps {
-  opened: boolean
-  firstAttempt: boolean
-  correctWord?: string
-  correctImage?: string
-  translation?: string
+  opened: boolean // Controls if the modal is visible
+  firstAttempt: boolean // true: Show try again | false: Show game over
+  correctWord?: string // The correct word to display on game over
+  correctImage?: string // The correct image path to display on game over
+  translation?: string // Translation of the correct word
+  // Callback when user clicks "Okay" and "Start New Game"
   onTryAgain: () => void
   onRestart: () => void
 }
@@ -29,24 +35,28 @@ export function WrongAnswerModal({
   onRestart
 }: WrongAnswerModalProps) {
   return (
+    // If it's just a warning, closing returns to game. 
+    // If it's game over, closing should restart.
     <Modal opened={opened} onClose={firstAttempt ? onTryAgain : onRestart} centered radius="lg">
       <Stack align="center" gap="md">
+        {/* Branch 1: First Attempt (Warning) */}
         {firstAttempt ? (
           <>
-            <Text size="lg" fw={500}>
-              That's not the right word!
+            <Text size="lg" fw={500} color="yellow">
+              kjinu'kwalsi ap
             </Text>
-            <Text size="sm" c="dimmed">
+            <Text size="10px" c="dimmed">
               Try again.
             </Text>
-            <Button color="blue" onClick={onTryAgain}>
+            <Button color="yellow" onClick={onTryAgain}>
               Okay
             </Button>
           </>
         ) : (
+          /* Branch 2: Second Attempt (Game Over / Reveal) */
           <>
-            <Text size="lg" fw={500} c="green">
-              Incorrect again!
+            <Text size="lg" fw={500} color="yellow">
+              Incorrect
             </Text>
 
             {correctImage && (
@@ -61,6 +71,7 @@ export function WrongAnswerModal({
               />
             )}
 
+            {/* Answer Reveal Text */}
             <Text size="sm" ta="center">
               The correct word was <b>{correctWord}</b>
               <br />
@@ -69,7 +80,7 @@ export function WrongAnswerModal({
               </Text>
             </Text>
 
-            <Button color="green" fullWidth onClick={onRestart}>
+            <Button color="yellow" fullWidth onClick={onRestart}>
               Start a new game
             </Button>
           </>

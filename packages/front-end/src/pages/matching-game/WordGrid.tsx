@@ -1,3 +1,13 @@
+/**
+ * Word Grid Display Component
+ *
+ * Description: Renders a 3x3 grid of interactive images within a specific
+ * background container. This serves as the main game board where users
+ * select images to match the current word.
+ *
+ * Author: Wenda Tan
+ */
+
 import type {Word} from '@/types'
 
 import {AspectRatio, BackgroundImage, Box, SimpleGrid} from '@mantine/core'
@@ -7,11 +17,19 @@ import placeholderImage from '@/assets/images/items/Random.jpg'
 import {toStorageUrl} from '@/utils'
 
 interface WordGridProps {
+  /** Array of Word objects to display. Null entries represent empty slots. */
   words: (Word | null)[]
+  /** Callback function when a valid image is clicked. Returns the image path. */
   handleSelection: (selectedImage: string) => void
 }
 
+/**
+ * Component: WordGrid
+ * The main container that layers the interactive items on top of the 'shelf' background.
+ */
 export function WordGrid({words, handleSelection}: WordGridProps) {
+  // 1. Map Data to Components
+  // Converts the data array into renderable Panels or Placeholders
   const panels = words.map((word, index) => {
     if (word) {
       return <WordPanel key={index} word={word} onClick={() => handleSelection(word.imagePath)} />
@@ -20,6 +38,7 @@ export function WordGrid({words, handleSelection}: WordGridProps) {
     }
   })
 
+  // 2. Render Layout
   return (
     <Box w="100%" maw={550} mx="auto">
       <AspectRatio ratio={1}>
@@ -34,6 +53,12 @@ export function WordGrid({words, handleSelection}: WordGridProps) {
     </Box>
   )
 }
+
+// --- Styles ---
+
+/** * Shared styles for both active panels and placeholders 
+ * to ensure consistent alignment.
+ */
 const panelStyle: React.CSSProperties = {
   width: '100%',
   aspectRatio: '1',
@@ -43,6 +68,10 @@ const panelStyle: React.CSSProperties = {
   transition: 'transform 0.2s ease-in-out'
 }
 
+/**
+ * Renders a clickable game piece (Animal/Item).
+ * Handles the hover zoom effect.
+ */
 function WordPanel({word, onClick}: {word: Word; onClick: () => void}) {
   return (
     <Box
@@ -57,6 +86,10 @@ function WordPanel({word, onClick}: {word: Word; onClick: () => void}) {
   )
 }
 
+/**
+ * Renders a placeholder for empty slots or loading states.
+ * Non-interactive.
+ */
 function WordPanelPlaceholder() {
   return (
     <Box
