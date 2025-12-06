@@ -1,10 +1,16 @@
 /**
- * Importing animals, and map layouts for island game.
- * 
+ * Island Game Data Configuration
+ *
+ * Description: This file acts as the central database for the Goat Island game.
+ * It serves three main purposes:
+ * 1. Imports all necessary image assets (sprites and map backgrounds).
+ * 2. Defines the dictionary of Animals (English -> Mik'maq).
+ * 3. Configures the Level Progression (assigning maps, targets, and coordinates).
+ *
  * Author: Wenda Tan
  */
 
-//Animals
+// Animal Sprites (Used for Quiz Options and Victory Reveals)
 import amaljikwej from '@/assets/images/island_game/animals/amaljikwej.png'
 import aplikmuj from '@/assets/images/island_game/animals/aplikmuj.png'
 import kopit from '@/assets/images/island_game/animals/kopit.png'
@@ -12,7 +18,8 @@ import lentuk from '@/assets/images/island_game/animals/lentuk.png'
 import muin from '@/assets/images/island_game/animals/muin.png'
 import tiam from '@/assets/images/island_game/animals/tiam.png'
 import wowkwis from '@/assets/images/island_game/animals/wowkwis.png'
-//Map sections
+
+// Map Background Sections (Used as the game board)
 import islandStart from '@/assets/images/island_game/map/island_start.png'
 import island1 from '@/assets/images/island_game/map/island_1.png'
 import island2 from '@/assets/images/island_game/map/island_2.png'
@@ -22,6 +29,10 @@ import island5 from '@/assets/images/island_game/map/island_5.png'
 import island6 from '@/assets/images/island_game/map/island_6.png'
 import islandFinish from '@/assets/images/island_game/map/island_finish.png'
 
+/**
+ * Represents a single animal entity in the game.
+ * Used for quiz options and correct answer validation.
+ */
 export interface Animal {
   id: string
   mikmaq: string
@@ -29,6 +40,11 @@ export interface Animal {
   image: string
 }
 
+/**
+ * The Master List of Animals.
+ * Acts as the "Database" for the quiz logic.
+ * Could eventually be added to the database for dynamic content management.
+ */
 export const ANIMALS: Animal[] = [
   { id: 'raccoon', mikmaq: 'Amaljikwej', english: 'Raccoon', image: amaljikwej },
   { id: 'rabbit', mikmaq: 'Apli\'kmuj', english: 'Rabbit', image: aplikmuj },
@@ -39,6 +55,9 @@ export const ANIMALS: Animal[] = [
   { id: 'fox', mikmaq: 'Wowkwis', english: 'Fox', image: wowkwis },
 ]
 
+/**
+ * Defines the setup for a specific stage of the game.
+ */
 export interface Level {
   levelId: number
   mapImage: string
@@ -47,7 +66,11 @@ export interface Level {
   characterPos: { top: string; left: string }
 }
 
-// Game levels
+/**
+ * Game Level Configuration.
+ * Controls the order of the game. As the user completes a level,
+ * the app advances to the next index in this array.
+ */
 export const GAME_LEVELS: Level[] = [
   { 
     levelId: 0, 
@@ -93,4 +116,5 @@ export const GAME_LEVELS: Level[] = [
   }
 ]
 
+// The standalone background for the Victory Screen
 export const FINISH_MAP = islandFinish

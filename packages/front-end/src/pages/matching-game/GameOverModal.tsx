@@ -1,10 +1,11 @@
 /**
- * When the game is over, show the number of beads and allow user to play again.
- * Temporary page, will reaplce with ConnorG's once it's completed
+ * Game Over {old, no longer used, replaced with GameEndPopup.tsx}
  *
- * Author(s):
- * Wenda Tan
- * ChatGPT
+ * A modal dialog displayed when the user completes a game session.
+ * It shows the final score (visualized as beads) and provides a button to restart.
+ *
+ * Author:
+ * - Wenda Tan
  */
 
 import {Button, Group, Modal, Stack, Text} from '@mantine/core'
@@ -12,11 +13,14 @@ import {Button, Group, Modal, Stack, Text} from '@mantine/core'
 import {ScoreBeads} from './ScoreBeads'
 
 type GameOverModalProps = {
-  opened: boolean
-  score: number
-  onNewGame: () => void
+  opened: boolean // Controls whether the modal is visible
+  score: number // Final score to display
+  onNewGame: () => void // Callback function to reset the game state and start over
 }
 
+/**
+ * Component: GameOverModal
+ */
 export function GameOverModal({opened, score, onNewGame}: GameOverModalProps) {
   return (
     <Modal
@@ -24,11 +28,11 @@ export function GameOverModal({opened, score, onNewGame}: GameOverModalProps) {
       onClose={() => {}}
       title={
         <Text size="xl" fw={700} ta="center" w="100%">
-          Kelulktelatekn
+          Kelulktelatekn 
         </Text>
       }
       centered
-      withCloseButton={false}
+      withCloseButton={false} // Hide the 'X' button to force the user to use the "Play Again" button
     >
       <Stack gap="lg">
         <ScoreBeads score={score} />
